@@ -4,6 +4,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { CustomerLoginComponent } from './customer-login/customer-login.component';
 import { CustomerPageComponent } from './customer-page/customer-page.component';
 import { SellerRegisterComponent } from './seller-register/seller-register.component';
+import { SellerLoginComponent } from './seller-login/seller-login.component';
  
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   },
   { path: 'register', component: CustomerPageComponent },
   { path:'seller-register', component: SellerRegisterComponent },
+  { path:'seller-login', component:SellerLoginComponent },
   { path: '**', component: NotFoundComponent },
  
 ];

@@ -10,6 +10,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { CompatibilityComponent } from './components/compatibility/compatibility.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SellerRegisterComponent } from './seller-register/seller-register.component';
+import { SellerLoginComponent } from './seller-login/seller-login.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { SellerRegisterComponent } from './seller-register/seller-register.compo
     NotFoundComponent,
     CompatibilityComponent,
     SellerRegisterComponent,
+    SellerLoginComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule],
   providers: [],
