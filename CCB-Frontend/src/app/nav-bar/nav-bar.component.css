@@ -1,10 +1,90 @@
-#mainNav .brand {
+body {
+  min-height: 15vh;
+}
+#mainNav {
   color: black;
+  box-shadow: 0 0.5em 0.5em -0.4em #eee;
 }
 #nav a {
   color: black;
 }
 
-#mainNav {
+#nav-fields {
+  width: 100%;
+}
+
+#links {
+  margin: 0.5em 0;
+  display: flex;
+  justify-content: center;
+}
+
+#links .nav-item {
+  margin: 0 0.5em;
+  font-weight: bold;
+}
+
+.divider {
+  border-right: 2px solid #f7743c;
+  opacity: 0.5;
+}
+
+#links .nav-item:hover {
+  margin: 0 0.5em;
+  text-decoration: underline;
+}
+
+.comp {
+  border-radius: 0.5em;
+  background-color: #f7743c;
+  padding: 0.2em 0.4em;
+}
+
+#nav .comp a {
+  color: white;
+  text-decoration: none;
+}
+
+.dropbtn {
+  color: black;
+  padding: 0.5em;
+  cursor: pointer;
+  border: none;
+}
+
+.myAccount {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.myAccount:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.myAccount:hover .dropbtn {
   background-color: #eee;
+  border-radius: 0.3em;
 }

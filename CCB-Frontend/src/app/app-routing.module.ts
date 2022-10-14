@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 import { CustomerLoginComponent } from './customer-login/customer-login.component';
 import { CustomerPageComponent } from './customer-page/customer-page.component';
 
@@ -9,6 +10,7 @@ const routes: Routes = [
     component: CustomerLoginComponent,
   },
   { path: 'register', component: CustomerPageComponent },
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({

@@ -31,18 +31,66 @@
           <span class="navbar-toggler-icon"></span>
         </button>
       </div>
-      <div class="row">
+      <div class="row d-flex justify-content-center ml-5 mt-2" id="nav-fields">
         <div class="col-md-12">
-          <div class="collapse navbar-collapse" id="nav">
+          <div class="form-row">
+            <div class="col-md-3">
+              <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <option selected>All cities</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <input
+                class="form-control"
+                type="Search"
+                placeholder="What would you like to search?"
+              />
+            </div>
+            <div
+              class="col-md-3 d-flex justify-content-around align-items-center"
+            >
+              <div class="myAccount">
+                <h5 class="dropbtn">My Account</h5>
+                <div class="dropdown-content">
+                  <a href="#">Profile</a>
+                  <a href="#">Orders</a>
+                  <a href="#">Logout</a>
+                </div>
+              </div>
+              <h5>Cart</h5>
+            </div>
+          </div>
+        </div>
+        <div class="collapse navbar-collapse text-center" id="nav">
+          <div class="col-md-12" id="links">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="#">HOME</a>
+                <a class="nav-link" href="#">Graphic Cards</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">FEATURES</a>
+                <a class="nav-link" href="#">CPU/Processors</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">PRICING</a>
+                <a class="nav-link" href="#">Motherboard</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Memory</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Storage</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Pre-built Computers</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Laptops</a>
+              </li>
+              <div class="divider"></div>
+              <li class="nav-item comp">
+                <a class="nav-link" href="#">Component Compatibility checker</a>
               </li>
             </ul>
           </div>
