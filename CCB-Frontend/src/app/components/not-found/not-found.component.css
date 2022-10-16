@@ -14,7 +14,7 @@ div {
   border: none;
   color: white;
   font-weight: bold;
-  width: 500px;
+  width: fit-content;
   transition: color 0.25s, border-color 0.25s, box-shadow 0.25s, transform 0.25s;
 }
 .btn-primary:hover,

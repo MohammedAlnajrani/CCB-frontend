@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./nav-bar.component.css'],
 })
 export class NavBarComponent implements OnInit {
+  public isCollapsed = true;
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {}
