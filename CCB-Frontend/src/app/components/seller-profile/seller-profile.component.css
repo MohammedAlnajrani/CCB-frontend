@@ -1,0 +1,34 @@
+body {
+  border-radius: 1.5em;
+  margin: 1.5em 1.5em;
+  background-color: #eee;
+  border: 1.5em;
+  padding: 5em;
+}
+.divider {
+  height: 3px;
+  width: 80%;
+  background-color: orange;
+  margin: auto;
+}
+
+.btn-primary {
+  background-color: orange;
+  color: white;
+  font-weight: bold;
+  border: none;
+  transition: color 0.25s, border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  /* background-blend-mode: darken;*/
+  background: linear-gradient(
+    to right,
+    rgba(231, 73, 11, 0.62),
+    rgba(41, 92, 202, 0.62)
+  );
+}
+
+.product-img {
+  width: 100%;
+}

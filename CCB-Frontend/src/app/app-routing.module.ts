@@ -1,22 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { CustomerLoginComponent } from './customer-login/customer-login.component';
-import { CustomerPageComponent } from './customer-page/customer-page.component';
-import { SellerRegisterComponent } from './seller-register/seller-register.component';
-import { SellerLoginComponent } from './seller-login/seller-login.component';
- 
+import { SellerProfileComponent } from './components/seller-profile/seller-profile.component';
 
+const accountModule = () =>
+  import('./account/account.module').then((x) => x.AccountModule);
 const routes: Routes = [
-  {
-    path: 'login',
-    component: CustomerLoginComponent,
-  },
-  { path: 'register', component: CustomerPageComponent },
-  { path:'seller-register', component: SellerRegisterComponent },
-  { path:'seller-login', component:SellerLoginComponent },
+  { path: 'account', loadChildren: accountModule },
+  { path: 'seller-profile', component: SellerProfileComponent },
   { path: '**', component: NotFoundComponent },
- 
 ];
 
 @NgModule({

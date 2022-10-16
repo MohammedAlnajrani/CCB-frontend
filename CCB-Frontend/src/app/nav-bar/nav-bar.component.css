@@ -1,5 +1,6 @@
 body {
   min-height: 15vh;
+  background: none;
 }
 #mainNav {
   color: black;
@@ -36,7 +37,7 @@ body {
 
 .comp {
   border-radius: 0.5em;
-  background-color: #f7743c;
+  background-color: orange;
   padding: 0.2em 0.4em;
 }
 
