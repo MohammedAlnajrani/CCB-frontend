@@ -8,6 +8,11 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { CompatibilityComponent } from './components/compatibility/compatibility.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SellerProfileComponent } from './components/seller-profile/seller-profile.component';
+import { CpuComponent } from './components/compatibility/cpu/cpu.component';
+import { MotherboardComponent } from './components/compatibility/motherboard/motherboard.component';
+import { MemoryComponent } from './components/compatibility/memory/memory.component';
+import { GpuComponent } from './components/compatibility/gpu/gpu.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,8 +21,12 @@ import { SellerProfileComponent } from './components/seller-profile/seller-profi
     NotFoundComponent,
     CompatibilityComponent,
     SellerProfileComponent,
+    CpuComponent,
+    MotherboardComponent,
+    MemoryComponent,
+    GpuComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, NgbModule],
+  imports: [BrowserModule, AppRoutingModule, NgbModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
