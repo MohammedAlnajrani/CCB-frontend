@@ -1,1 +1,97 @@
-<p>compatibility works!</p>
+<body>
+  <div class="container-fluid">
+    <div class="row header">
+      <div class="col-md-12">
+        <h5 class="text-center text-white my-4">
+          This service allow you to check the compatibility of your components
+        </h5>
+        <p class="text-white text-center">
+          Note: this does not include all the components in the market
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div
+        class="col-md-12 bg-success text-white py-3"
+        *ngIf="socketCompatible"
+      >
+        <h5>No issues found</h5>
+      </div>
+      <div
+        class="col-md-12 bg-danger text-white py-3"
+        *ngIf="!socketCompatible"
+      >
+        <h5>Issues found with the Motherboard and CPU socket</h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Component</th>
+              <th scope="col">Selection</th>
+              <!-- <th scope="col">Action</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">CPU</th>
+              <td *ngIf="chosenCPU?.cpu_name != ''">
+                {{ chosenCPU?.cpu_name }}
+              </td>
+              <td *ngIf="chosenCPU?.cpu_name === ''">
+                <button class="btn btn-primary" routerLink="cpu">
+                  Choose CPU
+                </button>
+              </td>
+              <td *ngIf="chosenCPU?.cpu_name != ''">
+                <button
+                  class="btn btn-danger"
+                  (click)="removeFromStorage('cpu')"
+                >
+                  Clear
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Motherboard</th>
+              <td *ngIf="chosenMB?.mb_name != ''">
+                {{ chosenMB.mb_name }}
+              </td>
+              <td *ngIf="chosenMB?.mb_name === ''">
+                <button class="btn btn-primary" routerLink="motherboard">
+                  Choose MB
+                </button>
+              </td>
+              <td *ngIf="chosenMB?.mb_name != ''">
+                <button
+                  class="btn btn-danger"
+                  (click)="removeFromStorage('mb')"
+                >
+                  Clear
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">GPU</th>
+              <td>
+                <button class="btn btn-primary" routerLink="gpu">
+                  Choose GPU
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Memory</th>
+              <td>
+                <button class="btn btn-primary" routerLink="memory">
+                  Choose Memory
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>

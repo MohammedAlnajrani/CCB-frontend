@@ -1,0 +1,41 @@
+<div class="container-fluid">
+  <div class="row header">
+    <div class="col-md-12">
+      <h5 class="text-center text-white my-4">Choose a CPU</h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Socket</th>
+            <th scope="col">Cores</th>
+            <th scope="col">Manufacturer</th>
+            <th scope="col">Core Clock</th>
+            <th scope="col">Boost clock</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cpu of cpuList">
+            <th scope="row">{{ cpu.cpu_name }}</th>
+            <td>
+              {{ cpu.socket }}
+            </td>
+            <td>{{ cpu.cores }}</td>
+            <td>{{ cpu.manufacturer }}</td>
+            <td>{{ cpu.core_clock }}</td>
+            <td>{{ cpu.boost_clock }}</td>
+            <td>
+              <button class="btn btn-primary" (click)="saveToStorage(cpu)">
+                Add
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
