@@ -13,6 +13,8 @@ import { MotherboardComponent } from './components/compatibility/motherboard/mot
 import { MemoryComponent } from './components/compatibility/memory/memory.component';
 import { GpuComponent } from './components/compatibility/gpu/gpu.component';
 import { HttpClientModule } from '@angular/common/http';
+import { HomePageComponent } from './home-page/home-page.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { HttpClientModule } from '@angular/common/http';
     MotherboardComponent,
     MemoryComponent,
     GpuComponent,
+    HomePageComponent,
+    ProductDetailComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule, HttpClientModule],
   providers: [],
