@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuardGuard } from './auth-guards/auth-guard.guard';
 import { CompatibilityComponent } from './components/compatibility/compatibility.component';
 import { CpuComponent } from './components/compatibility/cpu/cpu.component';
 import { GpuComponent } from './components/compatibility/gpu/gpu.component';
@@ -7,6 +8,7 @@ import { MemoryComponent } from './components/compatibility/memory/memory.compon
 import { MotherboardComponent } from './components/compatibility/motherboard/motherboard.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { SellerProfileComponent } from './components/seller-profile/seller-profile.component';
+import { CustomerProfileComponent } from './customer-profile/customer-profile.component';
 
 const accountModule = () =>
   import('./account/account.module').then((x) => x.AccountModule);
@@ -18,6 +20,11 @@ const routes: Routes = [
   { path: 'compatibility/motherboard', component: MotherboardComponent },
   { path: 'compatibility/memory', component: MemoryComponent },
   { path: 'compatibility/gpu', component: GpuComponent },
+  {
+    path: 'profile',
+    component: CustomerProfileComponent,
+    canActivate: [AuthGuardGuard],
+  },
   { path: '**', component: NotFoundComponent },
 ];
 

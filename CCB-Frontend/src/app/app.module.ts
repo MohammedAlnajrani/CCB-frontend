@@ -13,6 +13,9 @@ import { MotherboardComponent } from './components/compatibility/motherboard/mot
 import { MemoryComponent } from './components/compatibility/memory/memory.component';
 import { GpuComponent } from './components/compatibility/gpu/gpu.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthGuardGuard } from './auth-guards/auth-guard.guard';
+import { CustomerProfileComponent } from './customer-profile/customer-profile.component';
 
 @NgModule({
   declarations: [
@@ -25,9 +28,17 @@ import { HttpClientModule } from '@angular/common/http';
     MotherboardComponent,
     MemoryComponent,
     GpuComponent,
+    CustomerProfileComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, NgbModule, HttpClientModule],
-  providers: [],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    NgbModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
+  providers: [AuthGuardGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
