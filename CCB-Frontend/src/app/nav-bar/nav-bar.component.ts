@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+import { faL } from '@fortawesome/free-solid-svg-icons';
+import { AuthCustomerService } from '../services/auth-customer.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -8,7 +10,20 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class NavBarComponent implements OnInit {
   public isCollapsed = true;
-  constructor(private route: ActivatedRoute) {}
+  isLoggedIn = false;
+  constructor(
+    private route: Router,
+    private customerAuth: AuthCustomerService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.customerAuth.isLoggedIn()) this.isLoggedIn = true;
+    const token = this.customerAuth.getToken();
+    console.log(this.customerAuth.getDecodedAccessToken(token));
+  }
+
+  logout() {
+    this.customerAuth.logout();
+    window.location.reload();
+  }
 }

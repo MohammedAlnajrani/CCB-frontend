@@ -15,6 +15,9 @@ import { GpuComponent } from './components/compatibility/gpu/gpu.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomePageComponent } from './home-page/home-page.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthGuardGuard } from './auth-guards/auth-guard.guard';
+import { CustomerProfileComponent } from './customer-profile/customer-profile.component';
 
 @NgModule({
   declarations: [
@@ -29,9 +32,17 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
     GpuComponent,
     HomePageComponent,
     ProductDetailComponent,
+    CustomerProfileComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, NgbModule, HttpClientModule],
-  providers: [],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    NgbModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
+  providers: [AuthGuardGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

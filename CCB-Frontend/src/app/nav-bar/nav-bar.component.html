@@ -42,7 +42,18 @@
             <div
               class="d-flex d-none d-md-flex flex-row align-items-center profile-cart"
             >
-              <div class="d-flex flex-column ms-2 profile">Profile</div>
+              <div *ngIf="!isLoggedIn" class="d-flex flex-column ms-2 profile">
+                <a routerLink="/account/login">Login</a>
+              </div>
+              <div *ngIf="isLoggedIn" class="d-flex flex-column ms-2 profile">
+                <div class="myAccount">
+                  <div class="dropbtn" routerLink="profile">Profile</div>
+                  <div class="dropdown-content">
+                    <a href="#">Orders</a>
+                    <a (click)="logout()">Logout</a>
+                  </div>
+                </div>
+              </div>
               <div class="d-flex flex-column ms-2">
                 <span class="cart">Cart</span>
               </div>
@@ -94,7 +105,9 @@
             </li>
 
             <li class="nav-item checker">
-              <a class="nav-link" href="#">Compatibility Checker</a>
+              <a class="nav-link" routerLink="compatibility"
+                >Compatibility Checker</a
+              >
             </li>
             <!-- <li class="nav-item dropdown">
             <a
