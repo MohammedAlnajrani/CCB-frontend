@@ -19,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthGuardGuard } from './auth-guards/auth-guard.guard';
 import { CustomerProfileComponent } from './customer-profile/customer-profile.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +34,7 @@ import { CustomerProfileComponent } from './customer-profile/customer-profile.co
     HomePageComponent,
     ProductDetailComponent,
     CustomerProfileComponent,
+
   ],
   imports: [
     BrowserModule,

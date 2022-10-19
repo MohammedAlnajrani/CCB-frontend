@@ -12,6 +12,7 @@ import { HomePageComponent } from "./home-page/home-page.component";
 import { ProductDetailComponent } from "./product-detail/product-detail.component";
 import { CustomerProfileComponent } from './customer-profile/customer-profile.component';
 
+
 const accountModule = () =>
   import('./account/account.module').then((x) => x.AccountModule);
 const routes: Routes = [
