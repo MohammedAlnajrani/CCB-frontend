@@ -12,16 +12,23 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="product-detail.component.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+       
+        
     </head>
     <body>
-       
+      
         <section class="py-5">
-            <div class="container px-4 px-lg-5 my-5">
-                <div class="row gx-4 gx-lg-5 align-items-center">
-                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="https://www.gamereactor.eu/media/79/_3867973.png" alt="..." /></div>
+            <div class="container px-4 px-lg-5 my-5" id="description">
+                <div class="row gx-4 gx-lg-5 align-items-center" style="text-align: left;">
+                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="https://www.proshop.fi/Images/ROG-Strix-4090-24G-NV.jpg" alt="..." /></div>
                     <div class="col-md-6">
-                        <div class="small mb-1">SKU: BST-498</div>
-                        <h1 class="display-5 fw-bolder">NVIDIA® GeForce RTX® 4090</h1>
+                        
+                        <div class="small mb-1" id="ShopName" style="font-weight: bold;"> sold by newegg</div>
+
+
+                        
+                        <h1 class="display-5 fw-bolder" style="font-size: 150%;">NVIDIA® GeForce RTX® 4090</h1>
                         <div class="fs-5 mb-5">
                             <span class="text-decoration-line-through">$499</span>
                         
@@ -29,11 +36,15 @@
                         <p class="lead">The NVIDIA® GeForce RTX® 4090 is the ultimate GeForce GPU. It brings an enormous leap in performance, efficiency, and AI-powered graphics. Experience ultra-high performance gaming, incredibly detailed virtual worlds, unprecedented productivity, and new ways to create. It’s powered by the NVIDIA Ada Lovelace architecture and comes with 24 GB of G6X memory to deliver the ultimate experience for gamers and creators.</p>
                         <div class="d-flex">
                             <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-                            <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                            <!-- <button class="btn btn-outline-dark flex-shrink-0" type="button">
                                 <i class="bi-cart-fill me-1"></i>
-                                Add to cart
-                            </button>
-                        </div>
+                             
+                            </button> -->
+                            <button type="button" class="btn btn-primary btn-lg" style="width: 50%; height: 50%; margin-left: 10px;">
+                                Add to card
+                              </button>
+                        </div><br>
+                        <p class="available">available in stock </p><br>
                     </div>
                 </div>
             </div>
@@ -149,6 +160,8 @@
             <div class="container"><p class="m-0 text-center text-white" style="font-weight: bold;">Go3  &copy; CCBuilder </p></div>
         </footer> -->
         <!-- Bootstrap core JS-->
+        
+        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
