@@ -47,7 +47,7 @@ export class CustomerPageComponent implements OnInit {
         //wait 2 seconds and navigate
         setTimeout(() => {
           this.router.navigateByUrl('account/login');
-        }, 2000);
+        }, 1000);
       },
       (err) => {
         this.errorMsg = err.error;

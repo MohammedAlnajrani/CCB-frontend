@@ -19,7 +19,8 @@ export class NavBarComponent implements OnInit {
   ngOnInit(): void {
     if (this.customerAuth.isLoggedIn()) this.isLoggedIn = true;
     const token = this.customerAuth.getToken();
-    console.log(this.customerAuth.getDecodedAccessToken(token));
+    const decode = this.customerAuth.getDecodedAccessToken(token);
+    console.log(decode.customer_id);
   }
 
   logout() {

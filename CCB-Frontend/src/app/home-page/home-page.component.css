@@ -1,0 +1,20 @@
+.bg-banner-part {
+  background-color: orange;
+}
+
+.panda-button {
+  background-image: linear-gradient(to bottom, #7584b5 0%, orange 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 9px 25px;
+}
+.text-truncate-container {
+  -webkit-line-clamp: 3;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.hero-banner {
+  border-radius: 2em;
+}

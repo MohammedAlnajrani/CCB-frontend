@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- css -->
+    <link rel="stylesheet" href="home-page.component.css" />
+  </head>
+
+  <body>
+    <header>
+      <!-- Banner part -->
+      <section id="home" class="container my-5">
+        <div
+          id="carouselExampleControls"
+          class="carousel slide bg-banner-part rounded-3"
+          data-bs-ride="carousel"
+        >
+          <div class="carousel-inner">
+            <div class="hero-banner p-4">
+              <div class="row">
+                <div class="d-flex align-items-center col-lg-7">
+                  <div>
+                    <h1>Get the best out of your GPU</h1>
+                    <p>
+                      With the new generation of CPU ensure only the best
+                      performance out of your Graphic Card
+                    </p>
+
+                    <button class="btn panda-button">Shop Now</button>
+                  </div>
+                </div>
+                <div class="col-lg-5">
+                  <img
+                    src="../../assets/amd-ryzen-5.png"
+                    class="d-block w-100"
+                    alt="..."
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </header>
+
+    <main>
+      <!-- NEW ADDED Products -->
+      <section
+        *ngIf="newProducts.length >= 1"
+        id="shoes"
+        class="container my-5"
+      >
+        <h2>LATEST PRODUCTS</h2>
+        <div class="row row-cols-1 row-cols-lg-3 row-cols-md-2 g-4">
+          <div class="col" *ngFor="let product of newProducts">
+            <div class="card h-100 border-0 shadow-lg p-3 mb-5 bg-body rounded">
+              <img
+                src="../../assets/ROG-Strix-4090"
+                class="card-img-top"
+                alt="..."
+              />
+              <div class="card-body p-0">
+                <h5 class="card-title">{{ product.product_name }}</h5>
+                <p class="card-text">
+                  {{ product.product_description }}
+                </p>
+                <h5>{{ product.price | currency: "SAR" }}</h5>
+                <h6>
+                  Location: <span>{{ product.city }}</span>
+                </h6>
+              </div>
+              <div class="">
+                <button class="btn panda-button">Buy Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services -->
+      <section class="container my-5">
+        <h2>OUR SERVICES</h2>
+        <div class="row g-4">
+          <div class="col-lg-4 col-md-6 mt-2">
+            <div
+              class="p-3 border bg-warning d-flex justify-content-between align-items-center rounded-3 flex-wrap"
+            >
+              <h3>Multiple shops</h3>
+
+              <img
+                src="../../assets/map+pin.png"
+                height="100"
+                width="100"
+                alt=""
+              />
+              <p class="card-text mt-3">
+                Find Components with ease no need to work yourself out to find
+                the best deal in your city
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mt-2">
+            <div
+              class="p-3 border bg-primary d-flex justify-content-between align-items-center rounded-3 flex-wrap"
+            >
+              <h3>Compatibility</h3>
+              <img
+                src="../../assets/check.png"
+                height="100"
+                width="100"
+                alt=""
+              />
+              <p class="card-text mt-3">
+                New to PC building? No worries you can make sure your hardware
+                is compatibile
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mt-2">
+            <div
+              class="p-3 border bg-danger d-flex justify-content-between align-items-center rounded-3 flex-wrap"
+            >
+              <h4>Recommendation</h4>
+              <img
+                src="../../assets/reecommendation.png"
+                height="100"
+                width="100"
+                alt=""
+              />
+              <p class="card-text mt-3">
+                Not sure what PC/Laptop to get? You can use our chatbot
+                recommedation service
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Backpack -->
+      <section id="backpack" class="container my-5">
+        <h2>TRENDING 🔥</h2>
+        <div class="row row-cols-1 row-cols-lg-3 row-cols-md-2 g-4">
+          <div class="col">
+            <div class="card h-100 border-0 shadow-lg p-3 mb-5 bg-body rounded">
+              <img
+                src="../../assets/ROG-Strix-4090"
+                class="card-img-top p-3"
+                alt="..."
+              />
+              <div class="card-body p-0">
+                <h5 class="card-title">GT 710</h5>
+                <h5>$120</h5>
+                <p class="card-text">
+                  This is a wider card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer.
+                </p>
+              </div>
+              <div class="">
+                <button class="btn panda-button">Buy Now &gt; &gt;</button>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100 border-0 shadow-lg p-3 mb-5 bg-body rounded">
+              <img
+                src="../../assets/amd-ryzen-5.png"
+                class="card-img-top p-3"
+                alt="..."
+              />
+              <div class="card-body p-0">
+                <h5 class="card-title">GT 710</h5>
+                <h5>$120</h5>
+                <p class="card-text">
+                  This is a wider card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer.
+                </p>
+              </div>
+              <div class="">
+                <button class="btn panda-button">Buy Now &gt; &gt;</button>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100 border-0 shadow-lg p-3 mb-5 bg-body rounded">
+              <img
+                src="../../assets/amd-ryzen-5.png"
+                class="card-img-top p-3"
+                alt="..."
+              />
+              <div class="card-body p-0">
+                <h5 class="card-title">GT 710</h5>
+                <h5>$120</h5>
+                <p class="card-text">
+                  This is a wider card with supporting text below as a natural
+                  lead-in to additional content. This card has even longer
+                  content than the first to show that equal height action.
+                </p>
+              </div>
+              <div class="">
+                <button class="btn panda-button">Buy Now &gt; &gt;</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
