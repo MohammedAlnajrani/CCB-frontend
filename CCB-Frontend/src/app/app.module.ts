@@ -18,6 +18,8 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthGuardGuard } from './auth-guards/auth-guard.guard';
 import { CustomerProfileComponent } from './customer-profile/customer-profile.component';
+import { CustomerOrdersComponent } from './customer-orders/customer-orders.component';
+import { CategoryProductsComponent } from './category-products/category-products.component';
 
 
 @NgModule({
@@ -34,6 +36,8 @@ import { CustomerProfileComponent } from './customer-profile/customer-profile.co
     HomePageComponent,
     ProductDetailComponent,
     CustomerProfileComponent,
+    CustomerOrdersComponent,
+    CategoryProductsComponent,
 
   ],
   imports: [

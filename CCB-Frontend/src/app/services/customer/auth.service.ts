@@ -20,4 +20,10 @@ export class AuthService {
       withCredentials: true,
     });
   }
+
+  getCustomerById(id: number): Observable<customer> {
+    return this.http.get<customer>(`${api}/customer/${id}`, {
+      withCredentials: true,
+    });
+  }
 }

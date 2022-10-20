@@ -8,10 +8,11 @@ import { MemoryComponent } from './components/compatibility/memory/memory.compon
 import { MotherboardComponent } from './components/compatibility/motherboard/motherboard.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { SellerProfileComponent } from './components/seller-profile/seller-profile.component';
-import { HomePageComponent } from "./home-page/home-page.component";
-import { ProductDetailComponent } from "./product-detail/product-detail.component";
+import { HomePageComponent } from './home-page/home-page.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { CustomerProfileComponent } from './customer-profile/customer-profile.component';
-
+import { CustomerOrdersComponent } from './customer-orders/customer-orders.component';
+import { CategoryProductsComponent } from './category-products/category-products.component';
 
 const accountModule = () =>
   import('./account/account.module').then((x) => x.AccountModule);
@@ -23,8 +24,10 @@ const routes: Routes = [
   { path: 'compatibility/motherboard', component: MotherboardComponent },
   { path: 'compatibility/memory', component: MemoryComponent },
   { path: 'compatibility/gpu', component: GpuComponent },
-  { path: 'product-detail', component:ProductDetailComponent  },
+  { path: 'product-detail', component: ProductDetailComponent },
   { path: '', component: HomePageComponent },
+  { path: 'orders', component: CustomerOrdersComponent },
+  { path: 'products/category/:id', component: CategoryProductsComponent },
   {
     path: 'profile',
     component: CustomerProfileComponent,
