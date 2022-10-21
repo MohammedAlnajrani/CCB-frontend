@@ -20,6 +20,7 @@ import { AuthGuardGuard } from './auth-guards/auth-guard.guard';
 import { CustomerProfileComponent } from './customer-profile/customer-profile.component';
 import { CustomerOrdersComponent } from './customer-orders/customer-orders.component';
 import { CategoryProductsComponent } from './category-products/category-products.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { CategoryProductsComponent } from './category-products/category-products
     CustomerProfileComponent,
     CustomerOrdersComponent,
     CategoryProductsComponent,
+    FooterComponent,
 
   ],
   imports: [
