@@ -30,7 +30,8 @@ body{
         width: 200px;
         height: 200px;
     }
-    .btn-primary {
+    .button{
+      
   background-color: orange;
   border-color: blue;
   color: white;
@@ -39,8 +40,8 @@ body{
   transition: color 0.25s, border-color 0.25s, box-shadow 0.25s, transform 0.25s;
 }
 
-.btn-primary:hover,
-.btn-primary:focus {
+.button:hover,
+.button:focus {
   /* background-blend-mode: darken;*/
   background: linear-gradient(
     to right,
@@ -52,6 +53,28 @@ body{
   box-shadow: 0 0.5em 0.5em -0.4em #9a7f92;
   
 }
+.panda-button {
+  background-color: orange;
+  border-color: blue;
+  color: white;
+  border-radius: 1.2em;
+ 
+  transition: color 0.25s, border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+}
+.panda-button:hover,.button:focus {
+  background: linear-gradient(
+    to right,
+    rgba(231, 73, 11, 0.62),
+    rgba(41, 92, 202, 0.62)
+  );
+  color: white;
+  transform: translateY(-0.25em);
+  box-shadow: 0 0.5em 0.5em -0.4em #9a7f92;
+}
+.card-title{
+  width:25% 
+}
+
 
 
     .search #price1,
