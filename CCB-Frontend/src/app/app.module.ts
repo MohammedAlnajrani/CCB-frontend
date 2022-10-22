@@ -21,6 +21,8 @@ import { CustomerProfileComponent } from './customer-profile/customer-profile.co
 import { CustomerOrdersComponent } from './customer-orders/customer-orders.component';
 import { CategoryProductsComponent } from './category-products/category-products.component';
 import { FooterComponent } from './footer/footer.component';
+import { AddProdcutComponent } from './add-prodcut/add-prodcut.component';
+import { SearchResultComponent } from './search-result/search-result.component';
 
 
 @NgModule({
@@ -40,6 +42,8 @@ import { FooterComponent } from './footer/footer.component';
     CustomerOrdersComponent,
     CategoryProductsComponent,
     FooterComponent,
+    AddProdcutComponent,
+    SearchResultComponent,
 
   ],
   imports: [
