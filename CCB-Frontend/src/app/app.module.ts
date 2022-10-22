@@ -20,7 +20,13 @@ import { AuthGuardGuard } from './auth-guards/auth-guard.guard';
 import { CustomerProfileComponent } from './customer-profile/customer-profile.component';
 import { CustomerOrdersComponent } from './customer-orders/customer-orders.component';
 import { CategoryProductsComponent } from './category-products/category-products.component';
+<<<<<<< HEAD
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+=======
+import { FooterComponent } from './footer/footer.component';
+import { AddProdcutComponent } from './add-prodcut/add-prodcut.component';
+import { SearchResultComponent } from './search-result/search-result.component';
+>>>>>>> 0e87eebe62359890d4cb767360f39adc7583bdb7
 
 
 @NgModule({
@@ -39,7 +45,13 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
     CustomerProfileComponent,
     CustomerOrdersComponent,
     CategoryProductsComponent,
+<<<<<<< HEAD
     AdminDashboardComponent,
+=======
+    FooterComponent,
+    AddProdcutComponent,
+    SearchResultComponent,
+>>>>>>> 0e87eebe62359890d4cb767360f39adc7583bdb7
 
   ],
   imports: [
