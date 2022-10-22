@@ -21,7 +21,6 @@ import { CustomerProfileComponent } from './customer-profile/customer-profile.co
 import { CustomerOrdersComponent } from './customer-orders/customer-orders.component';
 import { CategoryProductsComponent } from './category-products/category-products.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +37,6 @@ import { CategoryProductsComponent } from './category-products/category-products
     CustomerProfileComponent,
     CustomerOrdersComponent,
     CategoryProductsComponent,
-
   ],
   imports: [
     BrowserModule,

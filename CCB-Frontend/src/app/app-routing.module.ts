@@ -18,7 +18,7 @@ const accountModule = () =>
   import('./account/account.module').then((x) => x.AccountModule);
 const routes: Routes = [
   { path: 'account', loadChildren: accountModule },
-  { path: 'seller-profile', component: SellerProfileComponent },
+  { path: 'seller-profile/:id', component: SellerProfileComponent },
   { path: 'compatibility', component: CompatibilityComponent },
   { path: 'compatibility/cpu', component: CpuComponent },
   { path: 'compatibility/motherboard', component: MotherboardComponent },
@@ -28,6 +28,7 @@ const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'orders', component: CustomerOrdersComponent },
   { path: 'products/category/:id', component: CategoryProductsComponent },
+  { path: 'products/:id', component: ProductDetailComponent },
   {
     path: 'profile',
     component: CustomerProfileComponent,

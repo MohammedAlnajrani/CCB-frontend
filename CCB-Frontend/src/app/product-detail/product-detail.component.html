@@ -1,169 +1,292 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Shop Item - Start Bootstrap Template</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Bootstrap icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="product-detail.component.css" rel="stylesheet" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-       
-        
-    </head>
-    <body>
-      
-        <section class="py-5">
-            <div class="container px-4 px-lg-5 my-5" id="description">
-                <div class="row gx-4 gx-lg-5 align-items-center" style="text-align: left;">
-                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="https://www.proshop.fi/Images/ROG-Strix-4090-24G-NV.jpg" alt="..." /></div>
-                    <div class="col-md-6">
-                        
-                        <div class="small mb-1" id="ShopName" style="font-weight: bold;"> sold by newegg</div>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Shop Item - Start Bootstrap Template</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="product-detail.component.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <section class="py-5">
+      <div class="container px-4 px-lg-5 my-5" id="description">
+        <div
+          class="row gx-4 gx-lg-5 align-items-center"
+          style="text-align: left"
+        >
+          <div class="col-md-6">
+            <img
+              class="card-img-top mb-5 mb-md-0"
+              src="https://www.proshop.fi/Images/ROG-Strix-4090-24G-NV.jpg"
+              alt="..."
+            />
+          </div>
+          <div class="col-md-6">
+            <div class="small mb-1" id="ShopName" style="font-weight: bold">
+              Sold by
+              <a routerLink="../../seller-profile/{{ product.seller_id }}"
+                >newegg</a
+              >
+            </div>
 
-
-                        
-                        <h1 class="display-5 fw-bolder" style="font-size: 150%;">NVIDIA® GeForce RTX® 4090</h1>
-                        <div class="fs-5 mb-5">
-                            <span class="text-decoration-line-through">$499</span>
-                        
-                        </div>
-                        <p class="lead">The NVIDIA® GeForce RTX® 4090 is the ultimate GeForce GPU. It brings an enormous leap in performance, efficiency, and AI-powered graphics. Experience ultra-high performance gaming, incredibly detailed virtual worlds, unprecedented productivity, and new ways to create. It’s powered by the NVIDIA Ada Lovelace architecture and comes with 24 GB of G6X memory to deliver the ultimate experience for gamers and creators.</p>
-                        <div class="d-flex">
-                            <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-                            <!-- <button class="btn btn-outline-dark flex-shrink-0" type="button">
+            <h1 class="display-5 fw-bolder" style="font-size: 150%">
+              {{ product.product_name }}
+            </h1>
+            <div class="fs-5 mb-5">
+              <h5 class="text-decoration-line-through font-weight-bold">
+                {{ product.price | currency: "SAR" }}
+              </h5>
+            </div>
+            <p class="lead">
+              {{ product.product_description }}
+            </p>
+            <div class="my-3">
+              <span
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-geo-alt-fill"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"
+                  />
+                </svg>
+                {{ product.city }} {{ product.neighborhood }}</span
+              >
+            </div>
+            <div class="d-flex">
+              <input
+                class="form-control text-center me-3"
+                id="inputQuantity"
+                type="num"
+                value="1"
+                min="1"
+                max="5"
+                style="max-width: 3rem"
+              />
+              <!-- <button class="btn btn-outline-dark flex-shrink-0" type="button">
                                 <i class="bi-cart-fill me-1"></i>
                              
                             </button> -->
-                            <button type="button" class="btn btn-primary btn-lg" style="width: 50%; height: 50%; margin-left: 10px;">
-                                Add to card
-                              </button>
-                        </div><br>
-                        <p class="available">available in stock </p><br>
-                    </div>
-                </div>
+              <button
+                type="button"
+                class="btn btn-primary btn-lg"
+                style="width: 50%; height: 50%; margin-left: 10px"
+              >
+                Add to card
+              </button>
             </div>
-        </section>
-        <!-- Related items section-->
-        <!-- <section class="py-5 bg-light">
-            <div class="container px-4 px-lg-5 mt-5">
-                <h2 class="fw-bolder mb-4">Related products</h2>
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                    <div class="col mb-5">
-                        <div class="card h-100"> -->
-                            <!-- Product image-->
-                            <!-- <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." /> -->
-                            <!-- Product details-->
-                            <!-- <div class="card-body p-4">
-                                <div class="text-center"> -->
-                                    <!-- Product name-->
-                                    <!-- <h5 class="fw-bolder">Fancy Product</h5> -->
-                                    <!-- Product price-->
-                                    <!-- $40.00 - $80.00
-                                </div>
-                            </div> -->
-                            <!-- Product actions-->
-                            <!-- <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100"> -->
-                            <!-- Sale badge-->
-                            <!-- <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div> -->
-                            <!-- Product image-->
-                            <!-- <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." /> -->
-                            <!-- Product details-->
-                            <!-- <div class="card-body p-4">
-                                <div class="text-center"> -->
-                                    <!-- Product name-->
-                                    <!-- <h5 class="fw-bolder">Special Item</h5> -->
-                                    <!-- Product reviews-->
-                                    <!-- <div class="d-flex justify-content-center small text-warning mb-2">
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                    </div> -->
-                                    <!-- Product price-->
-                                    <!-- <span class="text-muted text-decoration-line-through">$20.00</span>
-                                    $18.00
-                                </div>
-                            </div> -->
-                            <!-- Product actions-->
-                            <!-- <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100"> -->
-                            <!-- Sale badge-->
-                            <!-- <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div> -->
-                            <!-- Product image-->
-                            <!-- <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." /> -->
-                            <!-- Product details-->
-                            <!-- <div class="card-body p-4">
-                                <div class="text-center"> -->
-                                    <!-- Product name-->
-                                    <!-- <h5 class="fw-bolder">Sale Item</h5> -->
-                                    <!-- Product price-->
-                                    <!-- <span class="text-muted text-decoration-line-through">$50.00</span>
-                                    $25.00
-                                </div>
-                            </div> -->
-                            <!-- Product actions-->
-                            <!-- <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100"> -->
-                            <!-- Product image-->
-                            <!-- <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." /> -->
-                            <!-- Product details-->
-                            <!-- <div class="card-body p-4">
-                                <div class="text-center"> -->
-                                    <!-- Product name-->
-                                    <!-- <h5 class="fw-bolder">Popular Item</h5> -->
-                                    <!-- Product reviews-->
-                                    <!-- <div class="d-flex justify-content-center small text-warning mb-2">
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                    </div> -->
-                                    <!-- Product price-->
-                                    <!-- $40.00
-                                </div>
-                            </div> -->
-                            <!-- Product actions-->
-                            <!-- <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-                            </div>
-                        </div>
-                    </div>
+            <br />
+            <p class="available" *ngIf="product.product_quantity > 5">
+              Available in stock
+            </p>
+            <p
+              class="available text-danger"
+              *ngIf="product.product_quantity < 5"
+            >
+              Only {{ product.product_quantity }} available in stock
+            </p>
+            <br />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Review -->
+    <section class="overflow-hidden">
+      <div class="container-fluid px-1 py-5 mx-auto">
+        <div class="row justify-content-center">
+          <div class="col-xl-7 col-lg-8 col-md-10 col-12 text-center mb-5">
+            <div class="card">
+              <div class="row justify-content-left d-flex">
+                <div class="col-md-4 d-flex flex-column">
+                  <div class="rating-box">
+                    <h1 class="pt-4">4.0</h1>
+                    <p class="">out of 5</p>
+                  </div>
+                  <div>
+                    <span class="fa fa-star star-active mx-1"></span>
+                    <span class="fa fa-star star-active mx-1"></span>
+                    <span class="fa fa-star star-active mx-1"></span>
+                    <span class="fa fa-star star-active mx-1"></span>
+                    <span class="fa fa-star star-inactive mx-1"></span>
+                  </div>
                 </div>
+                <div class="col-md-8">
+                  <div class="rating-bar0 justify-content-center">
+                    <table class="text-left mx-auto">
+                      <tr>
+                        <td class="rating-label">Excellent</td>
+                        <td class="rating-bar">
+                          <div class="bar-container">
+                            <div class="bar-5"></div>
+                          </div>
+                        </td>
+                        <td class="text-right">123</td>
+                      </tr>
+                      <tr>
+                        <td class="rating-label">Good</td>
+                        <td class="rating-bar">
+                          <div class="bar-container">
+                            <div class="bar-4"></div>
+                          </div>
+                        </td>
+                        <td class="text-right">23</td>
+                      </tr>
+                      <tr>
+                        <td class="rating-label">Average</td>
+                        <td class="rating-bar">
+                          <div class="bar-container">
+                            <div class="bar-3"></div>
+                          </div>
+                        </td>
+                        <td class="text-right">10</td>
+                      </tr>
+                      <tr>
+                        <td class="rating-label">Poor</td>
+                        <td class="rating-bar">
+                          <div class="bar-container">
+                            <div class="bar-2"></div>
+                          </div>
+                        </td>
+                        <td class="text-right">3</td>
+                      </tr>
+                      <tr>
+                        <td class="rating-label">Terrible</td>
+                        <td class="rating-bar">
+                          <div class="bar-container">
+                            <div class="bar-1"></div>
+                          </div>
+                        </td>
+                        <td class="text-right">0</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
             </div>
-        </section> -->
-        <!-- Footer
-        <footer class="py-5 bg-orange" style=" background-color: rgb(218, 152, 30);">
-            <div class="container"><p class="m-0 text-center text-white" style="font-weight: bold;">Go3  &copy; CCBuilder </p></div>
-        </footer> -->
-        <!-- Bootstrap core JS-->
-        
-        
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+            <div *ngIf="!isLoggedIn" style="text-align: center">
+              You need to be logged in to post reviews!
+            </div>
+            <div class="card blurred" *ngIf="!isLoggedIn">
+              <div class="text-center">
+                <div class="d-flex flex-column">
+                  <h3 class="mt-2 mb-0 text-center">Post a review</h3>
+                  <div>
+                    <ngb-rating
+                      [rate]="currentRate"
+                      [max]="5"
+                      (rateChange)="onRateClick($event)"
+                    >
+                      <ng-template let-fill="fill">
+                        <span
+                          [class.painted]="fill === 100"
+                          [class.notpainted]="fill === 0"
+                        >
+                          <span class="fa fa-star"></span>
+                        </span>
+                      </ng-template>
+                    </ngb-rating>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card" *ngIf="isLoggedIn">
+              <div class="text-center">
+                <div class="d-flex flex-column">
+                  <h3 class="mt-2 mb-0 text-center">Post a review</h3>
+                  <div>
+                    <ngb-rating
+                      [rate]="currentRate"
+                      [max]="5"
+                      (rateChange)="onRateClick($event)"
+                    >
+                      <ng-template let-fill="fill">
+                        <span
+                          [class.painted]="fill === 100"
+                          [class.notpainted]="fill === 0"
+                        >
+                          <span class="fa fa-star"></span>
+                        </span>
+                      </ng-template>
+                    </ngb-rating>
+                  </div>
+                </div>
+              </div>
 
-        <script src="js/scripts.js"></script>
-</body>
+              <input
+                type="text"
+                id="review"
+                placeholder="Write a review"
+                width="100%"
+                [(ngModel)]="reviewPost.description"
+              />
+              <div class="m-auto">
+                <button
+                  type="button"
+                  class="btn btn-primary btn-lg mt-3"
+                  (click)="postReview()"
+                >
+                  Post review
+                </button>
+              </div>
+              <div class="bg-danger text-white text-center" *ngIf="errorMsg">
+                {{ errorMsg }}
+              </div>
+            </div>
+            <div class="card" *ngFor="let review of reviewList">
+              <div class="row d-flex">
+                <div class="d-flex flex-column">
+                  <h3 class="mt-2 mb-0">Anonymous</h3>
+                  <div>
+                    <p class="text-left">
+                      <span class="text-muted">{{ review.rating }}.0</span>
+                      <ngb-rating [rate]="review.rating" [max]="5">
+                        <ng-template let-fill="fill">
+                          <span
+                            [class.painted]="fill === 100"
+                            [class.notpainted]="fill === 0"
+                          >
+                            <span class="fa fa-star"></span>
+                          </span>
+                        </ng-template>
+                      </ngb-rating>
+                    </p>
+                  </div>
+                </div>
+                <div class="ml-auto">
+                  <p class="text-muted pt-5 pt-sm-3">{{ review.created_at }}</p>
+                </div>
+              </div>
+              <div class="row text-left">
+                <h4 class="blue-text mt-3">"{{ review.description }}"</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="js/scripts.js"></script>
+  </body>
 </html>
