@@ -13,6 +13,7 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { CustomerProfileComponent } from './customer-profile/customer-profile.component';
 import { CustomerOrdersComponent } from './customer-orders/customer-orders.component';
 import { CategoryProductsComponent } from './category-products/category-products.component';
+import { AdminDashboardComponent } from "./admin-dashboard/admin-dashboard.component";
 
 const accountModule = () =>
   import('./account/account.module').then((x) => x.AccountModule);
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'product-detail', component: ProductDetailComponent },
   { path: '', component: HomePageComponent },
   { path: 'orders', component: CustomerOrdersComponent },
+  { path: 'admin-dashboard', component: AdminDashboardComponent },
   { path: 'products/category/:id', component: CategoryProductsComponent },
   {
     path: 'profile',
