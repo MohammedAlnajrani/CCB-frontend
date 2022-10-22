@@ -20,13 +20,10 @@ import { AuthGuardGuard } from './auth-guards/auth-guard.guard';
 import { CustomerProfileComponent } from './customer-profile/customer-profile.component';
 import { CustomerOrdersComponent } from './customer-orders/customer-orders.component';
 import { CategoryProductsComponent } from './category-products/category-products.component';
-<<<<<<< HEAD
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
-=======
 import { FooterComponent } from './footer/footer.component';
 import { AddProdcutComponent } from './add-prodcut/add-prodcut.component';
 import { SearchResultComponent } from './search-result/search-result.component';
->>>>>>> 0e87eebe62359890d4cb767360f39adc7583bdb7
 
 @NgModule({
   declarations: [
@@ -44,17 +41,10 @@ import { SearchResultComponent } from './search-result/search-result.component';
     CustomerProfileComponent,
     CustomerOrdersComponent,
     CategoryProductsComponent,
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
     AdminDashboardComponent,
-=======
     FooterComponent,
     AddProdcutComponent,
     SearchResultComponent,
->>>>>>> 0e87eebe62359890d4cb767360f39adc7583bdb7
-
->>>>>>> 4c31ba30f6bea05f641f8d063742afd9b9bba8bb
   ],
   imports: [
     BrowserModule,
