@@ -2,13 +2,18 @@
   background-color: #eee;
 }
 #Tag {
-  width: 13rem;
+  width: 31rem;
+  height: 3rem;
+  font-weight: 600;
+}
+#Category {
+  width: 31rem;
   height: 3rem;
   font-weight: 600;
 }
 
 #City {
-  width: 13rem;
+  width: 31rem;
   height: 3rem;
   font-weight: 600;
 }
