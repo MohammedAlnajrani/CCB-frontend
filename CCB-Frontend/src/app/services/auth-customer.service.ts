@@ -35,4 +35,24 @@ export class AuthCustomerService {
       return null;
     }
   }
+  isCustomer(): any {
+    const decode = this.getDecodedAccessToken(this.getToken());
+
+    if (decode.role_id == 1) return true;
+    else return false;
+  }
+
+  isSeller(): any {
+    const decode = this.getDecodedAccessToken(this.getToken());
+
+    if (decode.role_id == 2) return true;
+    else return false;
+  }
+
+  isAdmin(): any {
+    const decode = this.getDecodedAccessToken(this.getToken());
+
+    if (decode.role_id == 3) return true;
+    else return false;
+  }
 }

@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { customer } from 'src/app/Model/customer/customer';
+import { seller } from 'src/app/Model/seller/seller';
 
 let api = environment.apiUrl;
 @Injectable({
@@ -23,6 +24,16 @@ export class AuthService {
 
   getCustomerById(id: number): Observable<customer> {
     return this.http.get<customer>(`${api}/customer/${id}`, {
+      withCredentials: true,
+    });
+  }
+
+  sellerRegister(seller: seller): Observable<customer> {
+    return this.http.post<customer>(`${api}/sellers`, seller);
+  }
+
+  sellerLogin(seller: seller): Observable<seller> {
+    return this.http.post<seller>(`${api}/auth/seller`, seller, {
       withCredentials: true,
     });
   }

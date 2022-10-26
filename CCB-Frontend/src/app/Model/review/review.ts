@@ -5,4 +5,5 @@ export interface review {
   created_at?: String;
   product_id: number;
   customer_id: number;
+  cus_first_name: String;
 }
