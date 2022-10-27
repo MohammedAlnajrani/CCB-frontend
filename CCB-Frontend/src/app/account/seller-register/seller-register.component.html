@@ -14,7 +14,7 @@
     />
   </head>
   <body>
-    <section class="vh-100 gradient-custom">
+    <section class="gradient-custom">
       <div class="container py-5 h-100">
         <div class="row justify-content-center align-items-center h-100">
           <div class="col-12 col-lg-9 col-xl-7">
@@ -34,17 +34,19 @@
                 >
                   Seller Registration
                 </h3>
-                <form>
+                <form [formGroup]="form">
                   <div class="row">
-                    <div class="col-md-6 mb-4">
+                    <div class="col-md-6 mb-4 pb-2">
                       <div class="form-outline">
                         <input
-                          type="text"
-                          id="SellerfirstName"
+                          type="email"
+                          id="SellerEmail"
+                          placeholder="Email"
+                          required
+                          formControlName="seller_email"
                           class="form-control form-control-lg"
-                          placeholder="First Name"
                         />
-                        <label class="form-label" for="SellerfirstName"></label>
+                        <label class="form-label" for="SellerEmail"></label>
                       </div>
                     </div>
                     <div class="col-md-6 mb-4">
@@ -52,7 +54,9 @@
                         <input
                           type="password"
                           id="SellerPassword"
+                          formControlName="seller_password"
                           class="form-control form-control-lg"
+                          required
                           placeholder="Password"
                         />
                         <label class="form-label" for="SellerPassword"></label>
@@ -61,49 +65,35 @@
                   </div>
 
                   <div class="row">
-                    <div class="col-md-6 mb-4 d-flex align-items-center">
+                    <div class="col-md-12 mb-4 d-flex align-items-center">
                       <div class="form-outline datepicker w-100">
                         <input
                           type="text"
                           class="form-control form-control-lg"
                           id="StoreName"
+                          formControlName="shop_name"
                           placeholder="Store Name"
                         />
-                        <label for="birthdayDate" class="form-label"></label>
-                      </div>
-                    </div>
-                    <div class="col-md-6 mb-4 pb-2">
-                      <div class="form-outline">
-                        <input
-                          type="email"
-                          id="SellerEmail"
-                          placeholder="Email"
-                          class="form-control form-control-lg"
-                        />
-                        <label class="form-label" for="SellerEmail"></label>
+                        <label for="StoreName" class="form-label"></label>
                       </div>
                     </div>
                   </div>
-
-                  <div class="row">
-                    <div class="col-md-12 mb-4 pb-2">
-                      <div class="form-outline">
-                        <input
-                          type="tel"
-                          id="SellerphoneNumber"
-                          class="form-control form-control-lg"
-                          placeholder="Phone Number"
-                        />
-                        <label
-                          class="form-label"
-                          for="SellerphoneNumber"
-                        ></label>
-                      </div>
-                    </div>
+                  <div class="alert alert-danger" *ngIf="errorMsg.length > 1">
+                    {{ errorMsg }}
                   </div>
-
+                  <ngb-alert
+                    *ngIf="registered"
+                    [dismissible]="true"
+                    type="success"
+                  >
+                    <strong>Successfully registered</strong>
+                  </ngb-alert>
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                    <button type="button" class="btn btn-primary btn-lg">
+                    <button
+                      type="button"
+                      class="btn btn-primary btn-lg"
+                      (click)="registerSeller()"
+                    >
                       Register
                     </button>
                   </div>

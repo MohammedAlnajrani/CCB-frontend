@@ -14,4 +14,10 @@ export class ProductService {
   getProductDetails(id: number): Observable<product> {
     return this.http.get<product>(`${api}/product/${id}`);
   }
+
+  addProduct(product: product): Observable<product> {
+    return this.http.post<product>(`${api}/product`, product, {
+      withCredentials: true,
+    });
+  }
 }

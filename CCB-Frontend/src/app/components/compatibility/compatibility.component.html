@@ -60,7 +60,10 @@
                 {{ chosenMB.mb_name }}
               </td>
               <td *ngIf="chosenMB?.mb_name === ''">
-                <button class="btn btn-primary" routerLink="motherboard">
+                <button
+                  class="btn btn-primary"
+                  routerLink="/compatibility/motherboard"
+                >
                   Choose MB
                 </button>
               </td>

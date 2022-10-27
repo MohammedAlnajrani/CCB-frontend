@@ -18,6 +18,7 @@ import { AddProdcutComponent } from './add-prodcut/add-prodcut.component';
 import { IsCustomerGuard } from './auth-guards/is-customer.guard';
 import { IsSellerGuard } from './auth-guards/is-seller.guard';
 import { IsAdminGuard } from './auth-guards/is-admin.guard';
+import { LoginOptionComponent } from './login-option/login-option.component';
 
 const accountModule = () =>
   import('./account/account.module').then((x) => x.AccountModule);
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'compatibility/memory', component: MemoryComponent },
   { path: 'compatibility/gpu', component: GpuComponent },
   { path: 'product-detail', component: ProductDetailComponent },
+  { path: 'login', component: LoginOptionComponent },
   { path: '', component: HomePageComponent },
   {
     path: 'orders',

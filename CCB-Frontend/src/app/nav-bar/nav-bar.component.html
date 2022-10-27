@@ -45,12 +45,21 @@
               class="d-flex d-none d-md-flex flex-row align-items-center profile-cart"
             >
               <div *ngIf="!isLoggedIn" class="d-flex flex-column ms-2 profile">
-                <a routerLink="/account/login">Login</a>
+                <a routerLink="/login">Login</a>
               </div>
               <div *ngIf="isLoggedIn" class="d-flex flex-column ms-2 profile">
                 <div class="myAccount">
-                  <div class="dropbtn" routerLink="profile">Profile</div>
-                  <div class="dropdown-content">
+                  <div class="dropbtn" *ngIf="!isSeller" routerLink="profile">
+                    Profile
+                  </div>
+                  <div
+                    class="dropbtn"
+                    *ngIf="isSeller"
+                    routerLink="seller-profile/{{ decode.seller_id }}"
+                  >
+                    Profile
+                  </div>
+                  <div class="dropdown-content" *ngIf="!isSeller">
                     <a routerLink="orders">Orders</a>
                     <a (click)="logout()">Logout</a>
                   </div>
@@ -111,6 +120,12 @@
               <a class="nav-link" routerLink="compatibility"
                 >Compatibility Checker</a
               >
+            </li>
+            <li class="nav-item product" *ngIf="isSeller">
+              <a class="nav-link" routerLink="add-product">Add product</a>
+            </li>
+            <li class="nav-item product" *ngIf="isSeller">
+              <a class="nav-link" routerLink="add-product">Dashboard</a>
             </li>
             <!-- <li class="nav-item dropdown">
             <a

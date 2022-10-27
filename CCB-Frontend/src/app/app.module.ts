@@ -24,6 +24,7 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { FooterComponent } from './footer/footer.component';
 import { AddProdcutComponent } from './add-prodcut/add-prodcut.component';
 import { SearchResultComponent } from './search-result/search-result.component';
+import { LoginOptionComponent } from './login-option/login-option.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { SearchResultComponent } from './search-result/search-result.component';
     FooterComponent,
     AddProdcutComponent,
     SearchResultComponent,
+    LoginOptionComponent,
   ],
   imports: [
     BrowserModule,

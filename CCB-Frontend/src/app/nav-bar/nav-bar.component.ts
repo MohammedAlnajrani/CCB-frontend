@@ -13,6 +13,8 @@ export class NavBarComponent implements OnInit {
   categoryList: any[] = [];
   public isCollapsed = true;
   isLoggedIn = false;
+  isSeller = false;
+  decode: any = '';
   constructor(
     private route: Router,
     private customerAuth: AuthCustomerService,
@@ -23,8 +25,10 @@ export class NavBarComponent implements OnInit {
     if (this.customerAuth.isLoggedIn()) {
       this.isLoggedIn = true;
       const token = this.customerAuth.getToken();
-      const decode = this.customerAuth.getDecodedAccessToken(token);
-      console.log(decode.customer_id);
+      this.decode = this.customerAuth.getDecodedAccessToken(token);
+      if (this.decode.role_id == 2 || this.decode.role_id == 3) {
+        this.isSeller = true;
+      }
     }
     this.getCategories();
   }

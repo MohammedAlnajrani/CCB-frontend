@@ -23,6 +23,27 @@ body {
   text-align: start;
 }
 
+.product {
+  background-color: #6641d4;
+  margin: 0 1em;
+  border-top-right-radius: 1em;
+  border-bottom-left-radius: 1em;
+  transition: all 0.5s;
+}
+.product a {
+  color: white;
+}
+.product a:hover,
+.product a:focus {
+  color: white;
+}
+.product:hover {
+  border-top-left-radius: 1em;
+  border-bottom-right-radius: 1em;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
 .profile {
   padding: 0.5em 0.5em;
 }
@@ -107,6 +128,9 @@ body {
   }
   #navbarNavDropdown {
     text-align: center;
+  }
+  .product {
+    margin-top: 1em;
   }
 }
 
