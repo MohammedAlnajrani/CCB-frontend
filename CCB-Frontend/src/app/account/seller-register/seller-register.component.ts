@@ -14,7 +14,7 @@ export class SellerRegisterComponent implements OnInit {
   }
 
   registerSeller(){
-    this.customerService.sellerRegister()
+    // this.customerService.sellerRegister()
   }
 
 }

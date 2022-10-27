@@ -6,6 +6,7 @@ import { AuthCustomerService } from '../services/auth-customer.service';
 import { AuthService } from '../services/customer/auth.service';
 import { ProductService } from '../services/product/product.service';
 import { ReviewService } from '../services/review/review.service';
+import { SellerService } from '../services/seller.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -14,6 +15,7 @@ import { ReviewService } from '../services/review/review.service';
 })
 export class ProductDetailComponent implements OnInit {
   id = 0;
+  shopName = "Shop";
   currentRate = 0;
   reviewList: review[] = [];
   isLoggedIn = false;
@@ -44,7 +46,8 @@ export class ProductDetailComponent implements OnInit {
     private router: ActivatedRoute,
     private review: ReviewService,
     private customerService: AuthCustomerService,
-    private token: AuthCustomerService
+    private token: AuthCustomerService,
+    private sellerService: SellerService
   ) {}
 
   ngOnInit(): void {
@@ -53,12 +56,15 @@ export class ProductDetailComponent implements OnInit {
       this.id = param.get('id') as unknown as number;
       this.getProductDetails(this.id);
       this.getAllReviewByProductID(this.id);
+      
     });
+    
   }
 
   getProductDetails(id: number) {
     this.productService.getProductDetails(id).subscribe((res) => {
       this.product = res;
+      this.getSellerInfo();
     });
   }
 
@@ -113,5 +119,12 @@ export class ProductDetailComponent implements OnInit {
   onRateClick(event: any) {
     this.currentRate = event;
     console.log(this.currentRate);
+  }
+
+  getSellerInfo(){
+    this.sellerService.getSellerById(this.product.seller_id).subscribe(res => {
+      this.shopName = res.shop_name;
+      console.log(this.shopName)
+    })
   }
 }
