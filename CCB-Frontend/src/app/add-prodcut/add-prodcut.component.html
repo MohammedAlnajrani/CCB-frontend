@@ -17,7 +17,7 @@
           <div class="col">
             <div class="card card-registration my-4 card-container">
               <div class="row g-0">
-                <div class="col-xl-6 d-none d-xl-block">
+                <!-- <div class="col-xl-6 d-none d-xl-block">
                   <img
                     src="../../assets/Product presentation.svg"
                     alt="Sample photo"
@@ -28,8 +28,8 @@
                       padding-top: 8rem;
                     "
                   />
-                </div>
-                <div class="col-xl-6">
+                </div> -->
+                <div class="col-xl-12">
                   <div class="card-body p-md-5 text-black">
                     <h2 class="mb-5 text-uppercase">add product</h2>
                     <hr />
@@ -103,16 +103,33 @@
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-md-12 mb-4">
-                        <label for="Image" class="form-label"
-                          >Upload Product Image</label
-                        >
+                      <div class="col-md-6 mb-4">
+                        <select class="form-select-lg" id="Category">
+                          <option disabled hidden selected value="Category">
+                            Category
+                          </option>
+                          <optgroup label="Componant">
+                            <option value="CPU">CPU</option>
+                            <option value="GPU">GPU</option>
+                            <option value="Motherboard">Motherboard</option>
+                            <option value="Memeory">Memeory</option>
+                          </optgroup>
+                          <optgroup label="pre-built">
+                            <option value="PC">PC</option>
+                            <option value="Laptop">Laptop</option>
+                          </optgroup>
+
+                        </select>
+                      </div>
+                      <div class="col-md-6 mb-4">
+                        
                         <input
                           class="form-control"
                           type="file"
                           id="formFile"
                           onchange="preview()"
                         />
+                        <label for="Image" class="form-label">Upload Product Image</label>
                       </div>
                     </div>
                     <!-- <div class="custom-file">
@@ -175,7 +192,7 @@
                         Reset all
                       </button>
                       <button type="button" class="btn btn-primary btn-lg ms-2">
-                        Submit form
+                        Add the product 
                       </button>
                     </div>
                   </div>

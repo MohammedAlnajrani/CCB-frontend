@@ -17,6 +17,7 @@ export class ProductDetailComponent implements OnInit {
   currentRate = 0;
   reviewList: review[] = [];
   isLoggedIn = false;
+  averageRating = 0;
   product: product = {
     product_name: '',
     product_quantity: 0,
@@ -36,6 +37,7 @@ export class ProductDetailComponent implements OnInit {
     rating: 0,
     product_id: 0,
     customer_id: 0,
+    cus_first_name: '',
   };
   constructor(
     private productService: ProductService,
@@ -63,7 +65,7 @@ export class ProductDetailComponent implements OnInit {
   getAllReviewByProductID(id: number) {
     this.review.getAllReviewByProductID(id).subscribe((res) => {
       this.reviewList = res;
-      console.log(this.reviewList);
+      this.avgReview();
     });
   }
 
@@ -81,6 +83,7 @@ export class ProductDetailComponent implements OnInit {
       rating: this.currentRate,
       product_id: this.id,
       customer_id: customerID,
+      cus_first_name: decode.cus_first_name,
     };
 
     console.log(this.reviewPost);
@@ -88,6 +91,7 @@ export class ProductDetailComponent implements OnInit {
     this.review.postReview(this.reviewPost).subscribe(
       (data: any) => {
         console.log(data);
+        window.location.reload();
       },
       (err) => {
         this.errorMsg = err.error;
@@ -96,6 +100,16 @@ export class ProductDetailComponent implements OnInit {
     );
   }
 
+  avgReview() {
+    if (this.reviewList.length == 0) return;
+
+    for (let i = 0; i < this.reviewList.length; i++) {
+      this.averageRating += this.reviewList[i].rating;
+    }
+
+    this.averageRating = this.averageRating / this.reviewList.length;
+    console.log(this.averageRating);
+  }
   onRateClick(event: any) {
     this.currentRate = event;
     console.log(this.currentRate);

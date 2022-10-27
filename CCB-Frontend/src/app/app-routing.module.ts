@@ -15,6 +15,9 @@ import { CustomerOrdersComponent } from './customer-orders/customer-orders.compo
 import { CategoryProductsComponent } from './category-products/category-products.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AddProdcutComponent } from './add-prodcut/add-prodcut.component';
+import { IsCustomerGuard } from './auth-guards/is-customer.guard';
+import { IsSellerGuard } from './auth-guards/is-seller.guard';
+import { IsAdminGuard } from './auth-guards/is-admin.guard';
 
 const accountModule = () =>
   import('./account/account.module').then((x) => x.AccountModule);
@@ -31,24 +34,24 @@ const routes: Routes = [
   {
     path: 'orders',
     component: CustomerOrdersComponent,
-    canActivate: [AuthGuardGuard],
+    canActivate: [AuthGuardGuard, IsCustomerGuard],
   },
   {
     path: 'admin-dashboard',
     component: AdminDashboardComponent,
-    canActivate: [AuthGuardGuard],
+    canActivate: [AuthGuardGuard, IsAdminGuard],
   },
   { path: 'products/category/:id', component: CategoryProductsComponent },
   { path: 'products/:id', component: ProductDetailComponent },
   {
     path: 'add-product',
     component: AddProdcutComponent,
-    canActivate: [AuthGuardGuard],
+    canActivate: [AuthGuardGuard, IsSellerGuard],
   },
   {
     path: 'profile',
     component: CustomerProfileComponent,
-    canActivate: [AuthGuardGuard],
+    canActivate: [AuthGuardGuard, IsCustomerGuard],
   },
   { path: '**', component: NotFoundComponent },
 ];
