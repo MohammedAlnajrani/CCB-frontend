@@ -19,11 +19,20 @@ import { IsCustomerGuard } from './auth-guards/is-customer.guard';
 import { IsSellerGuard } from './auth-guards/is-seller.guard';
 import { IsAdminGuard } from './auth-guards/is-admin.guard';
 import { LoginOptionComponent } from './login-option/login-option.component';
+import { SellerDashboardComponent } from './seller-dashboard/seller-dashboard.component';
 
 const accountModule = () =>
   import('./account/account.module').then((x) => x.AccountModule);
+const dashboardModule = () =>
+  import('./admin-dashboard/admin-dashboard.module').then(
+    (x) => x.AdminDashboardModule
+  );
 const routes: Routes = [
   { path: 'account', loadChildren: accountModule },
+  {
+    path: 'admin-dashboard',
+    loadChildren: dashboardModule,
+  },
   { path: 'seller-profile/:id', component: SellerProfileComponent },
   { path: 'compatibility', component: CompatibilityComponent },
   { path: 'compatibility/cpu', component: CpuComponent },
@@ -41,7 +50,12 @@ const routes: Routes = [
   {
     path: 'admin-dashboard',
     component: AdminDashboardComponent,
-    canActivate: [AuthGuardGuard, IsAdminGuard],
+    canActivate: [AuthGuardGuard], //IsAdminGuard],
+  },
+  {
+    path: 'seller-dashboard',
+    component: SellerDashboardComponent,
+    canActivate: [AuthGuardGuard, IsSellerGuard],
   },
   { path: 'products/category/:id', component: CategoryProductsComponent },
   { path: 'products/:id', component: ProductDetailComponent },

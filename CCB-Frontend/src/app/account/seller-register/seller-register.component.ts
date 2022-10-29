@@ -27,8 +27,8 @@ export class SellerRegisterComponent implements OnInit {
     private authCustomer: AuthCustomerService
   ) {
     this.form = this.formBuilder.group({
-      seller_email: ['', Validators.required],
-      seller_password: ['', [Validators.required, Validators.minLength(8)]],
+      email: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(8)]],
       shop_name: ['', Validators.required],
     });
   }
@@ -42,7 +42,7 @@ export class SellerRegisterComponent implements OnInit {
       (data: any) => {
         this.errorMsg = '';
         this.registered = true;
-        console.log(data);
+
         setTimeout(() => {
           this.router.navigateByUrl('account/seller-login');
         }, 1000);

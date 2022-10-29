@@ -12,45 +12,41 @@
       <div class="row">
         <div class="col-lg-3 my-lg-0 my-md-1">
           <div id="sidebar" class="bg-purple">
-            <div class="h4 text-white">Account</div>
+            <div class="h4 text-white">Dashboard</div>
             <ul>
               <li class="active">
                 <a
-                  href="#"
+                  routerLink="../home"
                   class="text-decoration-none d-flex align-items-start"
                 >
                   <div class="fas fa-box pt-2 me-3"></div>
                   <div class="d-flex flex-column">
-                    <div class="link">My Account</div>
-                    <div class="link-desc">
-                      View & Manage orders and returns
-                    </div>
+                    <div class="link">Users statics</div>
+                    <div class="link-desc">View users & products statics</div>
                   </div>
                 </a>
               </li>
               <li>
                 <a
-                  href="#"
+                  routerLink="../customers"
                   class="text-decoration-none d-flex align-items-start"
                 >
                   <div class="fas fa-box-open pt-2 me-3"></div>
                   <div class="d-flex flex-column">
-                    <div class="link">My Orders</div>
-                    <div class="link-desc">
-                      View & Manage orders and returns
-                    </div>
+                    <div class="link">Customers</div>
+                    <div class="link-desc">View & Manage Customers</div>
                   </div>
                 </a>
               </li>
               <li>
                 <a
-                  href="#"
+                  routerLink="../sellers"
                   class="text-decoration-none d-flex align-items-start"
                 >
                   <div class="far fa-address-book pt-2 me-3"></div>
                   <div class="d-flex flex-column">
-                    <div class="link">Address Book</div>
-                    <div class="link-desc">View & Manage Addresses</div>
+                    <div class="link">Sellers</div>
+                    <div class="link-desc">View & Manage Sellers</div>
                   </div>
                 </a>
               </li>
@@ -61,10 +57,8 @@
                 >
                   <div class="far fa-user pt-2 me-3"></div>
                   <div class="d-flex flex-column">
-                    <div class="link">My Profile</div>
-                    <div class="link-desc">
-                      Change your profile details & password
-                    </div>
+                    <div class="link">Orders</div>
+                    <div class="link-desc">View & Manage Orders</div>
                   </div>
                 </a>
               </li>
@@ -75,8 +69,8 @@
                 >
                   <div class="fas fa-headset pt-2 me-3"></div>
                   <div class="d-flex flex-column">
-                    <div class="link">Help & Support</div>
-                    <div class="link-desc">Contact Us for help and support</div>
+                    <div class="link">Products</div>
+                    <div class="link-desc">View & Manage Orders</div>
                   </div>
                 </a>
               </li>
@@ -85,43 +79,65 @@
         </div>
         <div class="col-lg-9 my-lg-0 my-1">
           <div id="main-content" class="bg-white border">
-            <div class="d-flex flex-column">
-              <div class="h5">Hello Jhon,</div>
-              <div>Logged in as: someone@gmail.com</div>
-            </div>
             <div class="d-flex my-4 flex-wrap justify-content-around">
               <div class="box me-4 my-1 bg-light">
-                <img
+                <!-- <img
                   src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png"
                   alt=""
-                />
+                /> -->
+                <div class="tag">Registered Users</div>
                 <div class="d-flex align-items-center mt-2">
-                  <div class="tag">Register User</div>
-                  <div class="ms-auto number">64</div>
+                  <!-- <div class="tag">Register User</div> -->
+                  <div class="ms-auto number">{{ totalCustomers }}</div>
                 </div>
               </div>
               <div class="box me-4 my-1 bg-light">
-                <img
+                <!-- <img
                   src="https://static.thenounproject.com/png/2900961-200.png"
                   alt=""
-                />
+                /> -->
+                <div class="tag">Registered Sellers</div>
                 <div class="d-flex align-items-center mt-2">
-                  <div class="tag">Register Seller</div>
-                  <div class="ms-auto number">16</div>
+                  <!-- <div class="tag">Register Seller</div> -->
+                  <div class="ms-auto number">{{ seller.length }}</div>
                 </div>
               </div>
               <div class="box me-4 my-1 bg-light">
-                <img
+                <!-- <img
                   src="https://cdn0.iconfinder.com/data/icons/cosmo-layout/40/box-512.png"
                   alt=""
-                />
+                /> -->
+                <div class="tag">Products post</div>
                 <div class="d-flex align-items-center mt-2">
-                  <div class="tag">Product post</div>
-                  <div class="ms-auto number">32</div>
+                  <div class="ms-auto number">{{ products.length }}</div>
                 </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <h4>Customer Register by month</h4>
+                <canvas
+                  id="barchart"
+                  width="700"
+                  height="250"
+                  #mychart
+                ></canvas>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <h4>Seller Register by month</h4>
+                <canvas
+                  id="barchart1"
+                  width="700"
+                  height="250"
+                  #mychart
+                ></canvas>
               </div>
             </div>
             <div class="text-uppercase">My recent orders</div>
+
             <div class="order my-3 bg-light">
               <div class="row">
                 <div class="col-lg-4">

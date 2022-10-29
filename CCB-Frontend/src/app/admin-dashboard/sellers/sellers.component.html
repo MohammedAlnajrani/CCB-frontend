@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="sellers.component.css" />
+  </head>
+  <body>
+    <div class="container mt-4">
+      <div class="row">
+        <div class="col-lg-3 my-lg-0 my-md-1">
+          <div id="sidebar" class="bg-purple">
+            <div class="h4 text-white">Dashboard</div>
+            <ul>
+              <li>
+                <a
+                  routerLink="../home"
+                  class="text-decoration-none d-flex align-items-start"
+                >
+                  <div class="fas fa-box pt-2 me-3"></div>
+                  <div class="d-flex flex-column">
+                    <div class="link">Users statics</div>
+                    <div class="link-desc">View users & products statics</div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a
+                  routerLink="../customers"
+                  class="text-decoration-none d-flex align-items-start"
+                >
+                  <div class="fas fa-box-open pt-2 me-3"></div>
+                  <div class="d-flex flex-column">
+                    <div class="link">Customers</div>
+                    <div class="link-desc">View & Manage Customers</div>
+                  </div>
+                </a>
+              </li>
+              <li class="active">
+                <a
+                  routerLink="../sellers"
+                  class="text-decoration-none d-flex align-items-start"
+                >
+                  <div class="far fa-address-book pt-2 me-3"></div>
+                  <div class="d-flex flex-column">
+                    <div class="link">Sellers</div>
+                    <div class="link-desc">View & Manage Sellers</div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a
+                  routerLink="../sellers"
+                  class="text-decoration-none d-flex align-items-start"
+                >
+                  <div class="far fa-user pt-2 me-3"></div>
+                  <div class="d-flex flex-column">
+                    <div class="link">Orders</div>
+                    <div class="link-desc">View & Manage Orders</div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-decoration-none d-flex align-items-start"
+                >
+                  <div class="fas fa-headset pt-2 me-3"></div>
+                  <div class="d-flex flex-column">
+                    <div class="link">Products</div>
+                    <div class="link-desc">View & Manage Orders</div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-9 my-lg-0 my-1">
+          <div id="main-content" class="bg-white border">
+            <div class="d-flex my-4 flex-wrap justify-content-around">
+              <div class="box me-4 my-1 bg-light" style="padding: 5px">
+                <!-- <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png"
+                  alt=""
+                /> -->
+                <div class="tag">Registered Sellers in week</div>
+                <div class="d-flex align-items-center mt-2">
+                  <!-- <div class="tag">Register User</div> -->
+                  <div class="ms-auto number">10</div>
+                </div>
+              </div>
+            </div>
+            <h4>Manage Sellers</h4>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="col-md-12">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th scope="col">Seller ID</th>
+                          <th scope="col">Email</th>
+                          <th scope="col">Shop name</th>
+                          <th scope="col">Created at</th>
+                          <th
+                            scope="col"
+                            colspan="2"
+                            style="text-align: center"
+                          >
+                            Action
+                          </th>
+                          <!-- <th scope="col">Action</th> -->
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let seller of sellerList">
+                          <th scope="row">{{ seller.seller_id }}</th>
+                          <td>{{ seller.seller_email }}</td>
+                          <td>{{ seller.shop_name }}</td>
+                          <td>{{ seller.created_at }}</td>
+                          <td>
+                            <ng-template #content let-modal>
+                              <div class="modal-header p-3">
+                                <h4 class="modal-title" id="modal-basic-title">
+                                  Profile update
+                                </h4>
+                              </div>
+                              <div class="modal-body p-3">
+                                <form>
+                                  <div class="mb-3">
+                                    <label for="email">Email</label>
+                                    <div class="input-group">
+                                      <input
+                                        type="email"
+                                        id="email"
+                                        class="form-control p-1"
+                                        value="{{ seller.seller_email }}"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="mb-3">
+                                    <label for="FirstName">Shop name</label>
+                                    <div class="input-group">
+                                      <input
+                                        id="FirstName"
+                                        class="form-control p-1"
+                                        value="{{ seller.shop_name }}"
+                                      />
+                                    </div>
+                                  </div>
+
+                                  <div class="mb-3">
+                                    <label for="customerPassword"
+                                      >Change password</label
+                                    >
+                                    <div class="input-group">
+                                      <input
+                                        type="password "
+                                        id="customerPassword"
+                                        class="form-control p-1"
+                                        placeholder="New password"
+                                      />
+                                    </div>
+                                  </div>
+                                </form>
+                              </div>
+                              <div class="modal-footer p-3">
+                                <button
+                                  type="button"
+                                  class="btn btn-danger m-3"
+                                  (click)="modal.dismiss('Cross click')"
+                                >
+                                  Close
+                                </button>
+                                <button
+                                  type="button"
+                                  class="btn btn-success m-3"
+                                  (click)="modal.close('Save click')"
+                                >
+                                  Save
+                                </button>
+                              </div>
+                            </ng-template>
+
+                            <button
+                              class="btn btn-primary px-2"
+                              (click)="open(content, seller)"
+                            >
+                              Edit
+                            </button>
+
+                            <hr />
+
+                            <pre>{{ closeResult }}</pre>
+                          </td>
+                          <td>
+                            <button
+                              class="btn btn-danger px-2"
+                              (click)="deleteSeller(seller)"
+                            >
+                              Delete
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

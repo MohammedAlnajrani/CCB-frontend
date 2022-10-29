@@ -4,5 +4,6 @@ export interface customer {
   cus_first_name: string;
   cus_last_name: string;
   customer_password: string;
+  created_at?: string;
   role_id: number;
 }

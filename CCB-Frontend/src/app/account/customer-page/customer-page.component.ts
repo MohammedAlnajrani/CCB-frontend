@@ -32,10 +32,10 @@ export class CustomerPageComponent implements OnInit {
   ngOnInit(): void {
     if (this.authCustomer.isLoggedIn()) this.router.navigateByUrl('/');
     this.form = this.formBuilder.group({
-      customer_email: ['', Validators.required],
+      email: ['', Validators.required],
       cus_first_name: ['', Validators.required],
       cus_last_name: ['', Validators.required],
-      customer_password: ['', [Validators.required, Validators.minLength(8)]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
     });
   }
 
@@ -44,12 +44,14 @@ export class CustomerPageComponent implements OnInit {
       (data: any) => {
         this.errorMsg = '';
         this.registered = true;
+        console.log(data);
         //wait 2 seconds and navigate
         setTimeout(() => {
           this.router.navigateByUrl('account/login');
         }, 1000);
       },
       (err) => {
+        console.log(err);
         this.errorMsg = err.error;
       }
     );

@@ -59,8 +59,8 @@
                   >
                     Profile
                   </div>
-                  <div class="dropdown-content" *ngIf="!isSeller">
-                    <a routerLink="orders">Orders</a>
+                  <div class="dropdown-content">
+                    <a *ngIf="!isSeller" routerLink="orders">Orders</a>
                     <a (click)="logout()">Logout</a>
                   </div>
                 </div>
@@ -125,7 +125,9 @@
               <a class="nav-link" routerLink="add-product">Add product</a>
             </li>
             <li class="nav-item product" *ngIf="isSeller">
-              <a class="nav-link" routerLink="add-product">Dashboard</a>
+              <a class="nav-link" routerLink="admin-dashboard/home"
+                >Dashboard</a
+              >
             </li>
             <!-- <li class="nav-item dropdown">
             <a

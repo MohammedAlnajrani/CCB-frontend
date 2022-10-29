@@ -25,6 +25,7 @@ import { FooterComponent } from './footer/footer.component';
 import { AddProdcutComponent } from './add-prodcut/add-prodcut.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { LoginOptionComponent } from './login-option/login-option.component';
+import { SellerDashboardComponent } from './seller-dashboard/seller-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { LoginOptionComponent } from './login-option/login-option.component';
     AddProdcutComponent,
     SearchResultComponent,
     LoginOptionComponent,
+    SellerDashboardComponent,
   ],
   imports: [
     BrowserModule,

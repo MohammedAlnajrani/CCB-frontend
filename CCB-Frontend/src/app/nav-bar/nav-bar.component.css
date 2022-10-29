@@ -138,6 +138,9 @@ body {
   #navbarNavDropdown {
     text-align: center;
   }
+  .product {
+    margin-top: 1em;
+  }
 }
 
 @media (min-width: 992px) and (max-width: 1007px) {
