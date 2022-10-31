@@ -101,7 +101,7 @@ export class OrdersComponent implements OnInit {
     });
   }
   orderDetails(order: orders) {
-    console.log(this.route.navigateByUrl(`order/${order.order_id}`));
+    this.route.navigateByUrl(`order/${order.order_id}`);
   }
 
   deleteOrder(order: orders | undefined) {

@@ -34,7 +34,7 @@ export class AdminDashboardComponent implements OnInit {
         for (let i = 0; i < this.customerEachMonth.length; i++) {
           this.customerPerMonth[i] = this.customerEachMonth[i].count;
           this.Months[i] = moment(this.customerEachMonth[i].created_at).format(
-            'MMMM'
+            'YYYY-MMMM-D'
           );
         }
       }

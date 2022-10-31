@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
+import { customer } from '../Model/customer/customer';
 import { orders } from '../Model/orders';
 import { orders_details } from '../Model/order_details';
 import { product } from '../Model/product/product';
 import { seller } from '../Model/seller/seller';
 import { AuthCustomerService } from '../services/auth-customer.service';
+import { AuthService } from '../services/customer/auth.service';
 import { OrderService } from '../services/order.service';
 import { ProductService } from '../services/product/product.service';
 import { SellerService } from '../services/seller.service';
@@ -22,7 +24,8 @@ export class OrderDetailsComponent implements OnInit {
     private productService: ProductService,
     private sellerService: SellerService,
     private authService: AuthCustomerService,
-    private route: Router
+    private route: Router,
+    private customerService: AuthService
   ) {}
   total = 0;
   id = 0;
@@ -36,6 +39,13 @@ export class OrderDetailsComponent implements OnInit {
     seller_password: '',
     shop_name: '',
     role_id: 2,
+  };
+  customer: customer = {
+    customer_email: '',
+    cus_first_name: '',
+    cus_last_name: '',
+    customer_password: '',
+    role_id: 1,
   };
   errorMsg = '';
   auth = false;
@@ -54,15 +64,16 @@ export class OrderDetailsComponent implements OnInit {
           this.route.navigateByUrl('/');
         }
       });
+
       this.auth = true;
     });
   }
 
   getOrderDetails(id: number) {
     this.order.getOrderById(id).subscribe(
-      (data) => {
+      async (data) => {
         this.orderDetails = data;
-
+        this.getCustomerById();
         this.getSellerDetails(this.orderDetails[0].seller_id);
 
         this.orderID = this.orderDetails[0].order_id;
@@ -71,11 +82,11 @@ export class OrderDetailsComponent implements OnInit {
           'MMMM D YYYY'
         );
         for (let order of this.orderDetails) {
-          this.getProductDetails(order.product_id);
+          await this.getProductDetails(order.product_id);
         }
         setTimeout(() => {
           this.calculateTotal();
-        }, 500);
+        }, 1750);
       },
       (err) => {
         this.errorMsg = err.error;
@@ -84,8 +95,8 @@ export class OrderDetailsComponent implements OnInit {
     );
   }
 
-  getProductDetails(id: number) {
-    this.productService.getProductDetails(id).subscribe((res) => {
+  async getProductDetails(id: number) {
+    await this.productService.getProductDetails(id).subscribe((res) => {
       this.products.push(res);
     });
   }
@@ -107,5 +118,12 @@ export class OrderDetailsComponent implements OnInit {
       this.seller = res;
       console.log(this.seller.shop_name);
     });
+  }
+  getCustomerById() {
+    this.customerService
+      .getCustomerById(this.orderDetails[0].customer_id)
+      .subscribe((res) => {
+        this.customer = res;
+      });
   }
 }

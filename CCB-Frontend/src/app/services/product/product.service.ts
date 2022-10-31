@@ -20,4 +20,10 @@ export class ProductService {
       withCredentials: true,
     });
   }
+
+  getAllProducts(): Observable<product[]> {
+    return this.http.get<product[]>(`${api}/product`, {
+      withCredentials: true,
+    });
+  }
 }

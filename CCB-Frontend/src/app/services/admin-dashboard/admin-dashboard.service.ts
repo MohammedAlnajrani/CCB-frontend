@@ -31,6 +31,11 @@ export class AdminDashboardService {
       withCredentials: true,
     });
   }
+  deleteProduct(id: number | undefined) {
+    return this.http.delete<product>(`${api}/product/${id}`, {
+      withCredentials: true,
+    });
+  }
 
   customerEachMonth() {
     return this.http.get(`${api}/customerEachMonth`, { withCredentials: true });
@@ -43,11 +48,19 @@ export class AdminDashboardService {
   customerLast7Days() {
     return this.http.get(`${api}/customerLast7Days`, { withCredentials: true });
   }
+  ProductsLast7Days() {
+    return this.http.get(`${api}/ProductsLast7Days`, {
+      withCredentials: true,
+    });
+  }
   sellerEachMonth() {
     return this.http.get(`${api}/sellerEachMonth`, { withCredentials: true });
   }
   ordersEachMonth() {
     return this.http.get(`${api}/OrdersEachMonth`, { withCredentials: true });
+  }
+  productsLastMonth() {
+    return this.http.get(`${api}/ProductsLastMonth`, { withCredentials: true });
   }
   allOrders(): Observable<orders[]> {
     return this.http.get<orders[]>(`${api}/orders`, { withCredentials: true });

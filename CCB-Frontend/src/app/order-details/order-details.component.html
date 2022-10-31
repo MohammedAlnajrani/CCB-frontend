@@ -1,3 +1,4 @@
+<div *ngIf="!auth"></div>
 <div class="row m-auto" *ngIf="errorMsg">
   <h3>{{ errorMsg }}</h3>
 </div>
@@ -46,14 +47,23 @@
     </div>
 
     <div class="pt-2 border-bottom mb-3"></div>
-    <div
-      class="d-flex justify-content-start align-items-center pl-3 py-3 mb-4 border-bottom"
-    >
+    <div class="d-flex justify-content-start align-items-center pl-3 py-1">
       <div class="text-muted">Seller</div>
+
       <div class="ml-auto">
         <label routerLink="/seller-profile/{{ seller.seller_id }}">{{
           seller.shop_name
         }}</label>
+      </div>
+    </div>
+    <div
+      class="d-flex justify-content-start align-items-center pl-3 py-3 border-bottom"
+    >
+      <div class="text-muted">Customer</div>
+
+      <div class="ml-auto text-muted">
+        <p>{{ customer.cus_first_name }}</p>
+        <span> {{ customer.cus_last_name }}</span>
       </div>
     </div>
 

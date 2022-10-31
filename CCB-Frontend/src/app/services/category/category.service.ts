@@ -18,4 +18,7 @@ export class CategoryService {
   getProductsByCategory(cat_id: number): Observable<product[]> {
     return this.http.get<product[]>(`${api}/products/category=${cat_id}`);
   }
+  getCatById(cat_id: number): Observable<any> {
+    return this.http.get<any>(`${api}/category/${cat_id}`);
+  }
 }
