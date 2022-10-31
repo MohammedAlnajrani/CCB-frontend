@@ -57,7 +57,7 @@ const routes: Routes = [
   {
     path: 'seller-dashboard',
     component: SellerDashboardComponent,
-    canActivate: [AuthGuardGuard, IsSellerGuard],
+    canActivate: [ IsSellerGuard],
   },
   { path: 'products/category/:id', component: CategoryProductsComponent },
   { path: 'products/:id', component: ProductDetailComponent },
