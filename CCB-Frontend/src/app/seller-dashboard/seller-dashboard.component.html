@@ -1,1 +1,114 @@
-<p>seller-dashboard works!</p>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="seller-dashboard.component.css" />
+  </head>
+  <body>
+    <div class="container mt-4">
+      <div class="row">
+        <div class="col-lg-3 my-lg-0 my-md-1">
+          <div id="sidebar" class="bg-purple">
+            <div class="h4 text-white">Dashboard</div>
+            <ul>
+              <li class="active">
+                <a
+                  routerLink="../home"
+                  class="text-decoration-none d-flex align-items-start"
+                >
+                  <div class="fas fa-box pt-2 me-3"></div>
+                  <div class="d-flex flex-column">
+                    <div class="link">statics</div>
+                    <div class="link-desc">View statics</div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a
+                  routerLink="../customers"
+                  class="text-decoration-none d-flex align-items-start"
+                >
+                  <div class="fas fa-box-open pt-2 me-3"></div>
+                  <div class="d-flex flex-column">
+                    <div class="link">My account</div>
+                    <div class="link-desc">View my account</div>
+                  </div>
+                </a>
+              </li>
+              
+              <li>
+                <a
+                  routerLink="../orders"
+                  class="text-decoration-none d-flex align-items-start"
+                >
+                  <div class="far fa-user pt-2 me-3"></div>
+                  <div class="d-flex flex-column">
+                    <div class="link">Orders</div>
+                    <div class="link-desc">View & Manage Orders</div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a
+                  routerLink="../products"
+                  class="text-decoration-none d-flex align-items-start"
+                >
+                  <div class="fas fa-headset pt-2 me-3"></div>
+                  <div class="d-flex flex-column">
+                    <div class="link">Products</div>
+                    <div class="link-desc">View & Manage Orders</div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-9 my-lg-0 my-1">
+          <div id="main-content" class="bg-white border">
+            <div class="d-flex my-4 flex-wrap justify-content-around">
+              
+              
+              <div class="box me-4 my-1 bg-light">
+                <!-- <img
+                  src="https://cdn0.iconfinder.com/data/icons/cosmo-layout/40/box-512.png"
+                  alt=""
+                /> -->
+                <div class="tag">Total orders</div>
+                <div class="d-flex align-items-center mt-2">
+                  <div class="ms-auto number">66</div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <h4>Customer Register by month</h4>
+                <canvas
+                  id="barchart"
+                  width="700"
+                  height="250"
+                  #mychart
+                ></canvas>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <h4>Seller Register by month</h4>
+                <canvas
+                  id="barchart1"
+                  width="700"
+                  height="250"
+                  #mychart
+                ></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
