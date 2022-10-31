@@ -1,1 +1,39 @@
-<p>memory works!</p>
+<div class="container-fluid">
+  <div class="row header">
+    <div class="col-md-12">
+      <h5 class="text-center text-white my-4">Choose a CPU</h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Size</th>
+            <th scope="col">Speed</th>
+
+            <th scope="col">Manufacturer</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let memory of memoryList">
+            <th scope="row">{{ memory.memory_name }}</th>
+            <td>
+              {{ memory.memory_size }}
+            </td>
+            <td>{{ memory.memory_speed }}</td>
+            <td>{{ memory.manufacturer }}</td>
+
+            <td>
+              <button class="btn btn-primary" (click)="saveToStorage(memory)">
+                Add
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -13,7 +13,7 @@
     <div class="row">
       <div
         class="col-md-12 bg-success text-white py-3"
-        *ngIf="socketCompatible"
+        *ngIf="socketCompatible && ddrCompatible"
       >
         <h5>No issues found</h5>
       </div>
@@ -22,6 +22,9 @@
         *ngIf="!socketCompatible"
       >
         <h5>Issues found with the Motherboard and CPU socket</h5>
+      </div>
+      <div class="col-md-12 bg-danger text-white py-3" *ngIf="!ddrCompatible">
+        <h5>Issues found with the Motherboard and Memory DDR socket</h5>
       </div>
     </div>
     <div class="row">
@@ -60,10 +63,7 @@
                 {{ chosenMB.mb_name }}
               </td>
               <td *ngIf="chosenMB?.mb_name === ''">
-                <button
-                  class="btn btn-primary"
-                  routerLink="/compatibility/motherboard"
-                >
+                <button class="btn btn-primary" routerLink="motherboard">
                   Choose MB
                 </button>
               </td>
@@ -78,17 +78,39 @@
             </tr>
             <tr>
               <th scope="row">GPU</th>
-              <td>
+              <td *ngIf="chosenGPU?.gpu_name != ''">
+                {{ chosenGPU.gpu_name }} {{ chosenGPU.chipset }}
+              </td>
+              <td *ngIf="chosenGPU?.gpu_name === ''">
                 <button class="btn btn-primary" routerLink="gpu">
                   Choose GPU
+                </button>
+              </td>
+              <td *ngIf="chosenGPU?.gpu_name != ''">
+                <button
+                  class="btn btn-danger"
+                  (click)="removeFromStorage('gpu')"
+                >
+                  Clear
                 </button>
               </td>
             </tr>
             <tr>
               <th scope="row">Memory</th>
-              <td>
+              <td *ngIf="chosenMM?.memory_name != ''">
+                {{ chosenMM.memory_name }}
+              </td>
+              <td *ngIf="chosenMM?.memory_name === ''">
                 <button class="btn btn-primary" routerLink="memory">
                   Choose Memory
+                </button>
+              </td>
+              <td *ngIf="chosenMM?.memory_name != ''">
+                <button
+                  class="btn btn-danger"
+                  (click)="removeFromStorage('memory')"
+                >
+                  Clear
                 </button>
               </td>
             </tr>

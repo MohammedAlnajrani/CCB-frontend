@@ -126,7 +126,7 @@
                             </div>
 
                             <div class="fs-8">{{ product.created_at }}</div>
-                            <div class="fs-8">Pickup Authentication: 10</div>
+
                             <!-- <div class="rating d-flex align-items-center pt-1">
                                                 <img src="https://www.freepnglogos.com/uploads/like-png/like-png-hand-thumb-sign-vector-graphic-pixabay-39.png"
                                                     alt=""><span class="px-2">Rating:</span>
@@ -152,6 +152,9 @@
                             </div>
                             <div
                               class="btn btn-secondary text-uppercase ml-3 p-1"
+                              routerLink="/products/{{
+                                product.product_id
+                              }}/edit"
                             >
                               update product
                             </div>

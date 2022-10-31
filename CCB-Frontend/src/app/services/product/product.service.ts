@@ -26,4 +26,13 @@ export class ProductService {
       withCredentials: true,
     });
   }
+  updateProduct(product: any): Observable<product> {
+    return this.http.put<product>(
+      `${api}/product/${product.product_id}`,
+      product,
+      {
+        withCredentials: true,
+      }
+    );
+  }
 }

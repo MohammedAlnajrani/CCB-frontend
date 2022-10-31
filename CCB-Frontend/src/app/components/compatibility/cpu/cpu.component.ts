@@ -11,11 +11,7 @@ import { CpuService } from 'src/app/services/compatibility/cpu.service';
 export class CpuComponent implements OnInit {
   cpuList: cpu[] = [];
 
-  constructor(private cpuService: CpuService, private router: Router) {
-    this.router.routeReuseStrategy.shouldReuseRoute = () => {
-      return false;
-    };
-  }
+  constructor(private cpuService: CpuService, private router: Router) {}
 
   ngOnInit(): void {
     this.getAllCpus();

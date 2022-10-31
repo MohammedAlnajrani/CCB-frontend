@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
 import { product } from '../Model/product/product';
 import { review } from '../Model/review/review';
@@ -34,6 +34,7 @@ export class ProductDetailComponent implements OnInit {
     seller_id: 0,
     category_id: 0,
   };
+  auth = false;
   errorMsg = '';
   reviewPost: review = {
     description: '',
@@ -48,7 +49,9 @@ export class ProductDetailComponent implements OnInit {
     private review: ReviewService,
     private customerService: AuthCustomerService,
     private token: AuthCustomerService,
-    private sellerService: SellerService
+    private sellerService: SellerService,
+    private authService: AuthCustomerService,
+    private route: Router
   ) {}
 
   ngOnInit(): void {
@@ -63,7 +66,18 @@ export class ProductDetailComponent implements OnInit {
   getProductDetails(id: number) {
     this.productService.getProductDetails(id).subscribe((res) => {
       this.product = res;
+      if (this.product == null) {
+        this.route.navigateByUrl('/not-found');
+      }
       this.getSellerInfo();
+      const decode = this.authService.getDecodedAccessToken(
+        this.authService.getToken()
+      );
+      if (decode != null) {
+        if (decode.role_id == 3 || decode.seller_id == this.product.seller_id) {
+          this.auth = true;
+        }
+      }
     });
   }
 

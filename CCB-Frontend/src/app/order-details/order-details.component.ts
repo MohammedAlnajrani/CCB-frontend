@@ -59,13 +59,13 @@ export class OrderDetailsComponent implements OnInit {
         const decode = this.authService.getDecodedAccessToken(
           this.authService.getToken()
         );
-        if (!(decode.role_id == 3 || decode.customer_id == res.customer_id)) {
-          this.auth = false;
+        console.log(decode);
+        if (decode.role_id == 3 || decode.customer_id == res.customer_id) {
+          this.auth = true;
+        } else {
           this.route.navigateByUrl('/');
         }
       });
-
-      this.auth = true;
     });
   }
 

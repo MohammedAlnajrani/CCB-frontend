@@ -1,0 +1,63 @@
+.card-container {
+  background-color: #eee;
+}
+#Tag {
+  width: 31rem;
+  height: 3rem;
+  font-weight: 600;
+}
+#Category {
+  width: 31rem;
+  height: 3rem;
+  font-weight: 600;
+}
+
+#City {
+  width: 31rem;
+  height: 3rem;
+  font-weight: 600;
+}
+select {
+  color: silver;
+}
+option {
+  color: black;
+}
+#lat::placeholder {
+  font-size: medium;
+}
+#lon::placeholder {
+  font-size: medium;
+}
+
+.btn-primary {
+  background-color: orange;
+  border: none;
+  color: white;
+  font-weight: bold;
+
+  transition: color 0.25s, border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  /* background-blend-mode: darken;*/
+  background: linear-gradient(
+    to right,
+    rgba(231, 73, 11, 0.62),
+    rgba(41, 92, 202, 0.62)
+  );
+  color: white;
+  transform: translateY(-0.25em);
+  box-shadow: 0 0.5em 0.5em -0.4em #9a7f92;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}

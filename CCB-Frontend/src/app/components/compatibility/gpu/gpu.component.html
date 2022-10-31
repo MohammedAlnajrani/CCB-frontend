@@ -1,1 +1,46 @@
-<p>gpu works!</p>
+<div class="container-fluid">
+  <div class="row header">
+    <div class="col-md-12">
+      <h5 class="text-center text-white my-4">Choose a CPU</h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Chipset</th>
+            <th scope="col">Memory</th>
+
+            <th scope="col">Core Clock</th>
+            <th scope="col">Boost clock</th>
+
+            <th scope="col">Manufacturer</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let gpu of gpuList">
+            <th scope="row">{{ gpu.gpu_name }}</th>
+            <td>
+              {{ gpu.chipset }}
+            </td>
+            <td>
+              {{ gpu.memory }}
+            </td>
+            <td>{{ gpu.core_clock }}</td>
+            <td>{{ gpu.boost_clock }}</td>
+            <td>{{ gpu.manufacturer }}</td>
+
+            <td>
+              <button class="btn btn-primary" (click)="saveToStorage(gpu)">
+                Add
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
