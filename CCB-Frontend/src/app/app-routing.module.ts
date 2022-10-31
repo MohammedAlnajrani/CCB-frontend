@@ -20,6 +20,7 @@ import { IsSellerGuard } from './auth-guards/is-seller.guard';
 import { IsAdminGuard } from './auth-guards/is-admin.guard';
 import { LoginOptionComponent } from './login-option/login-option.component';
 import { SellerDashboardComponent } from './seller-dashboard/seller-dashboard.component';
+import { OrderDetailsComponent } from './order-details/order-details.component';
 
 const accountModule = () =>
   import('./account/account.module').then((x) => x.AccountModule);
@@ -34,6 +35,7 @@ const routes: Routes = [
     loadChildren: dashboardModule,
   },
   { path: 'seller-profile/:id', component: SellerProfileComponent },
+  { path: 'order/:id', component: OrderDetailsComponent },
   { path: 'compatibility', component: CompatibilityComponent },
   { path: 'compatibility/cpu', component: CpuComponent },
   { path: 'compatibility/motherboard', component: MotherboardComponent },

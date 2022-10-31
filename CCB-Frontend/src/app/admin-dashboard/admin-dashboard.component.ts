@@ -88,6 +88,9 @@ export class AdminDashboardComponent implements OnInit {
         ],
       },
       options: {
+        ticks: {
+          precision: 0,
+        },
         scales: {
           y: {
             beginAtZero: true,

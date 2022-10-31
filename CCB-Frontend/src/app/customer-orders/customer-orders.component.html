@@ -8,12 +8,13 @@
     <link rel="stylesheet" href="customer-orders.component.css" />
   </head>
   <body>
-    <div class="container">
+    <div *ngIf="errorMsg">{{ errorMsg }}</div>
+    <div class="container" *ngIf="!errorMsg">
       <div class="row">
         <div class="col-md-3">
           <!-- <div class="osahan-account-page-left shadow-sm bg-white h-100"> -->
-            <!-- <div class="border-bottom p-4"> -->
-              <!-- <div class="osahan-user text-center">
+          <!-- <div class="border-bottom p-4"> -->
+          <!-- <div class="osahan-user text-center">
                 <!-- <div class="osahan-user-media">
                   <img
                     class="mb-3 rounded-pill shadow-sm mt-1"
@@ -35,9 +36,9 @@
                     </p>
                   </div>
                 </div> -->
-              <!-- </div>  -->
-            <!-- </div> -->
-            <!-- <ul
+          <!-- </div>  -->
+          <!-- </div> -->
+          <!-- <ul
               class="nav nav-tabs flex-column border-0 pt-4 pl-4 pb-4"
               id="myTab"
               role="tablist"
@@ -66,170 +67,61 @@
                 role="tabpanel"
                 aria-labelledby="orders-tab"
               >
-                <h4 class="font-weight-bold mt-0 mb-4" style="padding-top: 5px;">Past Orders</h4>
-                <div class="bg-white card mb-4 order-list shadow-sm">
-                  <div class="gold-members p-4">
-                    <a href="#"> </a>
-                    <div class="media">
-                      <a href="#">
-                        <!-- <img
-                          class="mr-4"
-                          src="https://bootdey.com/img/Content/avatar/avatar2.png"
-                          alt="Generic placeholder image"
-                        /> -->
-                      </a>
-                      <div class="media-body">
-                        <a href="#">
-                          <span class="float-right text-info"
-                            >Delivered on Mon, Nov 12, 7:18 PM
-                            <i class="icofont-check-circled text-success"></i
-                          ></span>
-                        </a>
-                        <h6 class="mb-2">
-                          <a href="#"></a>
-                          <a href="#" class="text-black"
-                            >RTX 4090</a
-                          >
-                        </h6>
-                        <p class="text-gray mb-1">
-                          <i class="icofont-location-arrow"></i> 730 S
-                          Mendenhall Rd, Memphis, TN 38117, USA
-                        </p>
-                        <p class="text-gray mb-3">
-                          <i class="icofont-list"></i> ORDER #25102589748
-                          <i class="icofont-clock-time ml-2"></i> Mon, Nov 12,
-                          6:26 PM
-                        </p>
-                        <p class="text-dark">
-                          Veg Masala Roll x 1, Veg Burger x 1, Veg Penne Pasta
-                          in Red Sauce x 1
-                        </p>
-                        <hr />
-                        <div class="float-right">
-                          <a class="btn btn-sm btn-outline-primary" href="#"
-                            ><i class="icofont-headphone-alt"></i> Review</a
-                          >
-                          <a class="btn btn-sm btn-primary" href="#"
-                            ><i class="icofont-refresh"></i> REORDER</a
-                          >
+                <h4 class="mt-0 mb-4" style="padding-top: 5px">Past Orders</h4>
+                <div class="row" *ngFor="let order of ordersList">
+                  <div class="col-md-12">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="order my-3 bg-light">
+                          <div class="row">
+                            <div class="col-lg-4">
+                              <div
+                                class="d-flex flex-column justify-content-between order-summary"
+                              >
+                                <div class="d-flex align-items-center">
+                                  <div class="text-uppercase">
+                                    Order #{{ order.order_id }}
+                                  </div>
+                                  <div
+                                    class="green-label ms-auto text-uppercase mx-3"
+                                  >
+                                    Pickup
+                                  </div>
+                                </div>
+
+                                <div class="fs-8">{{ order.order_date }}</div>
+                                <div class="fs-8">
+                                  Pickup Authentication: {{ order.order_auth }}
+                                </div>
+                                <!-- <div class="rating d-flex align-items-center pt-1">
+                                                    <img src="https://www.freepnglogos.com/uploads/like-png/like-png-hand-thumb-sign-vector-graphic-pixabay-39.png"
+                                                        alt=""><span class="px-2">Rating:</span>
+                                                    <span class="fas fa-star"></span>
+                                                    <span class="fas fa-star"></span>
+                                                    <span class="fas fa-star"></span>
+                                                    <span class="fas fa-star"></span>
+                                                    <span class="far fa-star"></span>
+                                                </div> -->
+                              </div>
+                            </div>
+                            <div class="col-lg-8">
+                              <div
+                                class="d-sm-flex align-items-sm-start justify-content-sm-between"
+                              >
+                                <div class="status">
+                                  Status : {{ order.order_status }}
+                                </div>
+
+                                <div
+                                  class="btn btn-primary text-uppercase"
+                                  (click)="orderDetails(order)"
+                                >
+                                  order info
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                        <p class="mb-0 text-black text-primary pt-2">
-                          <span class="text-black font-weight-bold">
-                            Total Paid:</span
-                          >
-                          $300
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="bg-white card mb-4 order-list shadow-sm">
-                  <div class="gold-members p-4">
-                    <a href="#"> </a>
-                    <div class="media">
-                      <a href="#">
-                        <!-- <img
-                          class="mr-4"
-                          src="https://bootdey.com/img/Content/avatar/avatar3.png"
-                          alt="Generic placeholder image"
-                        /> -->
-                      </a>
-                      <div class="media-body">
-                        <a href="#">
-                          <span class="float-right text-info"
-                            >Delivered on Mon, Nov 12, 7:18 PM
-                            <i class="icofont-check-circled text-success"></i
-                          ></span>
-                        </a>
-                        <h6 class="mb-2">
-                          <a href="#"></a>
-                          <a href="#" class="text-black"
-                            >GT 710</a
-                          >
-                        </h6>
-                        <p class="text-gray mb-1">
-                          <i class="icofont-location-arrow"></i> 1733 Ocean Ave,
-                          Santa Monica, CA 90401, USA
-                        </p>
-                        <p class="text-gray mb-3">
-                          <i class="icofont-list"></i> ORDER #25102589748
-                          <i class="icofont-clock-time ml-2"></i> Mon, Nov 12,
-                          6:26 PM
-                        </p>
-                        <p class="text-dark">
-                          Veg Masala Roll x 5, Veg Burger x 1, Veg Penne Pasta
-                          in Red Sauce x 1
-                        </p>
-                        <hr />
-                        <div class="float-right">
-                          <a class="btn btn-sm btn-outline-primary" href="#"
-                            ><i class="icofont-headphone-alt"></i> Review</a
-                          >
-                          <a class="btn btn-sm btn-primary" href="#"
-                            ><i class="icofont-refresh"></i> REORDER</a
-                          >
-                        </div>
-                        <p class="mb-0 text-black text-primary pt-2">
-                          <span class="text-black font-weight-bold">
-                            Total Paid:</span
-                          >
-                          $500
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="bg-white card order-list shadow-sm">
-                  <div class="gold-members p-4">
-                    <a href="#"> </a>
-                    <div class="media">
-                      <a href="#">
-                        <!-- <img
-                          class="mr-4"
-                          src="https://bootdey.com/img/Content/avatar/avatar4.png"
-                          alt="Generic placeholder image"
-                        /> -->
-                      </a>
-                      <div class="media-body">
-                        <a href="#">
-                          <span class="float-right text-info"
-                            >Delivered on Mon, Nov 12, 7:18 PM
-                            <i class="icofont-check-circled text-success"></i
-                          ></span>
-                        </a>
-                        <h6 class="mb-2">
-                          <a href="#"></a>
-                          <a href="#" class="text-black"
-                            >hp PAVILLION I7</a
-                          >
-                        </h6>
-                        <p class="text-gray mb-1">
-                          <i class="icofont-location-arrow"></i> 953 S Main St,
-                          Centerville, OH 45459, USA
-                        </p>
-                        <p class="text-gray mb-3">
-                          <i class="icofont-list"></i> ORDER #25102589748
-                          <i class="icofont-clock-time ml-2"></i> Mon, Nov 12,
-                          6:26 PM
-                        </p>
-                        <p class="text-dark">
-                          Veg Masala Roll x 5, Veg Penne Pasta in Red Sauce x 1
-                        </p>
-                        <hr />
-                        <div class="float-right">
-                          <a class="btn btn-sm btn-outline-primary" href="#"
-                            ><i class="icofont-headphone-alt"></i>Review</a
-                          >
-                          <a class="btn btn-sm btn-primary" href="#"
-                            ><i class="icofont-refresh"></i> REORDER</a
-                          >
-                        </div>
-                        <p class="mb-0 text-black text-primary pt-2">
-                          <span class="text-black font-weight-bold">
-                            Total Paid:</span
-                          >
-                          $420
-                        </p>
                       </div>
                     </div>
                   </div>

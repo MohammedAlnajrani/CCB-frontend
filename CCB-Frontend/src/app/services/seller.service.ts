@@ -7,17 +7,16 @@ import { product } from '../Model/product/product';
 
 let api = environment.apiUrl;
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SellerService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-
-  getSellerById(id:number): Observable<seller>{
+  getSellerById(id: number | undefined): Observable<seller> {
     return this.http.get<seller>(`${api}/sellers/${id}`);
   }
 
-  getAllProductsFromSeller(id:number): Observable<product[]>{
+  getAllProductsFromSeller(id: number): Observable<product[]> {
     return this.http.get<product[]>(`${api}/products/seller/${id}`);
   }
 }

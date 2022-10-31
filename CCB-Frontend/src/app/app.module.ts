@@ -26,6 +26,7 @@ import { AddProdcutComponent } from './add-prodcut/add-prodcut.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { LoginOptionComponent } from './login-option/login-option.component';
 import { SellerDashboardComponent } from './seller-dashboard/seller-dashboard.component';
+import { OrderDetailsComponent } from './order-details/order-details.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { SellerDashboardComponent } from './seller-dashboard/seller-dashboard.co
     SearchResultComponent,
     LoginOptionComponent,
     SellerDashboardComponent,
+    OrderDetailsComponent,
   ],
   imports: [
     BrowserModule,

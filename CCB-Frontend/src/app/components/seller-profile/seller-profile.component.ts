@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { SellerService } from 'src/app/services/seller.service';
 import { seller } from 'src/app/Model/seller/seller';
 import { product } from 'src/app/Model/product/product';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-seller-profile',
@@ -15,6 +16,7 @@ export class SellerProfileComponent implements OnInit {
     seller_email: '',
     seller_password: '',
     shop_name: '',
+    created_at: '',
     role_id: 0,
   };
 
@@ -35,7 +37,7 @@ export class SellerProfileComponent implements OnInit {
   getSellerInfo(id: number) {
     this.sellerService.getSellerById(id).subscribe((res) => {
       this.sellerInfo = res;
-      console.log(res);
+      this.sellerInfo.created_at = moment(res.created_at).format('MMMM D YYYY');
     });
   }
   getSellersProducts(id: number) {

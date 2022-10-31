@@ -33,6 +33,7 @@ export class SellersComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllSellers();
+    this.sellerLast7days();
   }
 
   getAllSellers() {
@@ -58,5 +59,12 @@ export class SellersComponent implements OnInit {
     } else {
       console.log(seller.seller_id + ' cancel');
     }
+  }
+
+  sellerLast7days() {
+    this.adminDashboard.sellerLast7Days().subscribe((res: any) => {
+      this.seller7Days = res[0].count;
+      console.log(res);
+    });
   }
 }

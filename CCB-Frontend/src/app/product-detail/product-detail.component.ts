@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import * as moment from 'moment';
 import { product } from '../Model/product/product';
 import { review } from '../Model/review/review';
 import { AuthCustomerService } from '../services/auth-customer.service';
@@ -15,7 +16,7 @@ import { SellerService } from '../services/seller.service';
 })
 export class ProductDetailComponent implements OnInit {
   id = 0;
-  shopName = "Shop";
+  shopName = 'Shop';
   currentRate = 0;
   reviewList: review[] = [];
   isLoggedIn = false;
@@ -56,9 +57,7 @@ export class ProductDetailComponent implements OnInit {
       this.id = param.get('id') as unknown as number;
       this.getProductDetails(this.id);
       this.getAllReviewByProductID(this.id);
-      
     });
-    
   }
 
   getProductDetails(id: number) {
@@ -71,6 +70,11 @@ export class ProductDetailComponent implements OnInit {
   getAllReviewByProductID(id: number) {
     this.review.getAllReviewByProductID(id).subscribe((res) => {
       this.reviewList = res;
+      for (let i = 0; i < this.reviewList.length; i++) {
+        this.reviewList[i].created_at = moment(
+          this.reviewList[i].created_at
+        ).format('MMMM D YYYY');
+      }
       this.avgReview();
     });
   }
@@ -121,10 +125,12 @@ export class ProductDetailComponent implements OnInit {
     console.log(this.currentRate);
   }
 
-  getSellerInfo(){
-    this.sellerService.getSellerById(this.product.seller_id).subscribe(res => {
-      this.shopName = res.shop_name;
-      console.log(this.shopName)
-    })
+  getSellerInfo() {
+    this.sellerService
+      .getSellerById(this.product.seller_id)
+      .subscribe((res) => {
+        this.shopName = res.shop_name;
+        console.log(this.shopName);
+      });
   }
 }

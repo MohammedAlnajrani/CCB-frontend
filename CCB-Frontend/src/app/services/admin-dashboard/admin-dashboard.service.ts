@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { seller } from 'src/app/Model/seller/seller';
 import { product } from 'src/app/Model/product/product';
 import { customer } from 'src/app/Model/customer/customer';
+import { orders } from 'src/app/Model/orders';
 
 let api = environment.apiUrl;
 @Injectable({
@@ -48,8 +49,8 @@ export class AdminDashboardService {
   ordersEachMonth() {
     return this.http.get(`${api}/OrdersEachMonth`, { withCredentials: true });
   }
-  allOrders() {
-    return this.http.get(`${api}/orders`, { withCredentials: true });
+  allOrders(): Observable<orders[]> {
+    return this.http.get<orders[]>(`${api}/orders`, { withCredentials: true });
   }
   deleteCustomer(id: number | undefined) {
     return this.http.delete(`${api}/customer/delete/${id}`, {
@@ -58,6 +59,16 @@ export class AdminDashboardService {
   }
   deleteSeller(id: number | undefined) {
     return this.http.delete(`${api}/seller/delete/${id}`, {
+      withCredentials: true,
+    });
+  }
+  sellerLast7Days() {
+    return this.http.get(`${api}/sellerLast7Days`, {
+      withCredentials: true,
+    });
+  }
+  ordersLast7Days() {
+    return this.http.get(`${api}/OrdersLast7Days`, {
       withCredentials: true,
     });
   }
