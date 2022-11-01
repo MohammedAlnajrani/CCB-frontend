@@ -23,6 +23,7 @@ import { SellerDashboardComponent } from './seller-dashboard/seller-dashboard.co
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { SearchResultComponent } from './search-result/search-result.component';
+import { CartComponent } from './cart/cart.component';
 import { OrderDetailsSellerComponent } from './order-details-seller/order-details-seller.component';
 
 const accountModule = () =>
@@ -80,6 +81,10 @@ const routes: Routes = [
   {
     path: 'search',
     component: SearchResultComponent,
+  },
+  {
+    path: 'cart',
+    component: CartComponent,
   },
   { path: '**', component: NotFoundComponent },
 ];

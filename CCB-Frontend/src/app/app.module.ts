@@ -29,6 +29,7 @@ import { SellerDashboardComponent } from './seller-dashboard/seller-dashboard.co
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { OrderDetailsSellerComponent } from './order-details-seller/order-details-seller.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { OrderDetailsSellerComponent } from './order-details-seller/order-detail
     OrderDetailsComponent,
     EditProductComponent,
     OrderDetailsSellerComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,
