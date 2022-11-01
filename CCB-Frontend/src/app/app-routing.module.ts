@@ -23,6 +23,7 @@ import { SellerDashboardComponent } from './seller-dashboard/seller-dashboard.co
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { SearchResultComponent } from './search-result/search-result.component';
+import { CartComponent } from "./cart/cart.component";
 
 const accountModule = () =>
   import('./account/account.module').then((x) => x.AccountModule);
@@ -78,6 +79,10 @@ const routes: Routes = [
   {
     path: 'search',
     component: SearchResultComponent,
+  },
+  {
+    path: 'cart',
+    component: CartComponent,
   },
   { path: '**', component: NotFoundComponent },
 ];

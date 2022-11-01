@@ -28,6 +28,7 @@ import { LoginOptionComponent } from './login-option/login-option.component';
 import { SellerDashboardComponent } from './seller-dashboard/seller-dashboard.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { EditProductComponent } from './edit-product/edit-product.component';
     SellerDashboardComponent,
     OrderDetailsComponent,
     EditProductComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,
