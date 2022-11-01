@@ -22,21 +22,39 @@
             </a>
           </div>
           <div class="col-md-3">
-            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-              <option selected>All cities</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+            <select
+              class="custom-select mr-sm-2"
+              id="inlineFormCustomSelect"
+              [(ngModel)]="city"
+            >
+              <option selected value="">All cities</option>
+              <option value="Jeddah">Jeddah</option>
+              <option value="Riyadh">Riyadh</option>
+              <option value="Dammam">Dammam</option>
+              <option value="Makkah">Makkah</option>
             </select>
           </div>
           <div class="col-md-5">
             <div class="d-flex form-inputs">
               <input
+                [(ngModel)]="query"
                 class="form-control"
                 type="text"
                 placeholder="Search any product..."
               />
-              <i class="bx bx-search"></i>
+              <i
+                class="bx bx-search"
+                style="
+                  top: 10px;
+                  background: orange;
+                  color: white;
+                  padding: 0.1em 0.5em;
+                  border-radius: 1em;
+                  cursor: pointer;
+                "
+                (click)="search()"
+                >Search</i
+              >
             </div>
           </div>
 

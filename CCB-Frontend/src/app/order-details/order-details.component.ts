@@ -55,11 +55,13 @@ export class OrderDetailsComponent implements OnInit {
       this.getOrderDetails(this.id);
       //check if auth to view order or not
       this.order.getOrderID(this.id).subscribe((res) => {
-        console.log(res);
         const decode = this.authService.getDecodedAccessToken(
           this.authService.getToken()
         );
-        console.log(decode);
+        if (decode.customer_id == null || !decode) {
+          this.route.navigateByUrl('/');
+          return;
+        }
         if (decode.role_id == 3 || decode.customer_id == res.customer_id) {
           this.auth = true;
         } else {

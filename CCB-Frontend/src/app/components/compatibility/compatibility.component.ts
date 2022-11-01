@@ -47,9 +47,9 @@ export class CompatibilityComponent implements OnInit {
   socketCompatible: boolean = true;
   ddrCompatible: boolean = true;
   constructor(private router: Router) {
-    this.router.routeReuseStrategy.shouldReuseRoute = () => {
-      return false;
-    };
+    // this.router.routeReuseStrategy.shouldReuseRoute = () => {
+    //   return false;
+    // };
   }
 
   ngOnInit(): void {

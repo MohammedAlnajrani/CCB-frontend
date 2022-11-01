@@ -22,6 +22,7 @@ import { LoginOptionComponent } from './login-option/login-option.component';
 import { SellerDashboardComponent } from './seller-dashboard/seller-dashboard.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
+import { SearchResultComponent } from './search-result/search-result.component';
 
 const accountModule = () =>
   import('./account/account.module').then((x) => x.AccountModule);
@@ -60,7 +61,7 @@ const routes: Routes = [
   {
     path: 'seller-dashboard',
     component: SellerDashboardComponent,
-    canActivate: [ IsSellerGuard],
+    canActivate: [IsSellerGuard],
   },
   { path: 'products/category/:id', component: CategoryProductsComponent },
   { path: 'products/:id', component: ProductDetailComponent },
@@ -73,6 +74,10 @@ const routes: Routes = [
     path: 'profile',
     component: CustomerProfileComponent,
     canActivate: [AuthGuardGuard, IsCustomerGuard],
+  },
+  {
+    path: 'search',
+    component: SearchResultComponent,
   },
   { path: '**', component: NotFoundComponent },
 ];
