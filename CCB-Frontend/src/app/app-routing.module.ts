@@ -23,6 +23,7 @@ import { SellerDashboardComponent } from './seller-dashboard/seller-dashboard.co
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { SearchResultComponent } from './search-result/search-result.component';
+import { OrderDetailsSellerComponent } from './order-details-seller/order-details-seller.component';
 
 const accountModule = () =>
   import('./account/account.module').then((x) => x.AccountModule);
@@ -39,6 +40,7 @@ const routes: Routes = [
   },
   { path: 'seller-profile/:id', component: SellerProfileComponent },
   { path: 'order/:id', component: OrderDetailsComponent },
+  { path: 'seller/order/:id', component: OrderDetailsSellerComponent },
   { path: 'compatibility', component: CompatibilityComponent },
   { path: 'compatibility/cpu', component: CpuComponent },
   { path: 'compatibility/motherboard', component: MotherboardComponent },

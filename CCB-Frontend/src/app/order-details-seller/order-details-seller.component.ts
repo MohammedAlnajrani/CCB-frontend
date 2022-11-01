@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
 import { customer } from '../Model/customer/customer';
-import { orders } from '../Model/orders';
 import { orders_details } from '../Model/order_details';
 import { product } from '../Model/product/product';
 import { seller } from '../Model/seller/seller';
@@ -13,23 +12,14 @@ import { ProductService } from '../services/product/product.service';
 import { SellerService } from '../services/seller.service';
 
 @Component({
-  selector: 'app-order-details',
-  templateUrl: './order-details.component.html',
-  styleUrls: ['./order-details.component.css'],
+  selector: 'app-order-details-seller',
+  templateUrl: './order-details-seller.component.html',
+  styleUrls: ['./order-details-seller.component.css'],
 })
-export class OrderDetailsComponent implements OnInit {
-  constructor(
-    private order: OrderService,
-    private router: ActivatedRoute,
-    private productService: ProductService,
-    private sellerService: SellerService,
-    private authService: AuthCustomerService,
-    private route: Router,
-    private customerService: AuthService
-  ) {}
+export class OrderDetailsSellerComponent implements OnInit {
   total = 0;
   id = 0;
-  public orderDetails: orders_details[] = [];
+  public orderDetails: any[] = [];
   public products: product[] = [];
   date: any;
   orderID: any;
@@ -49,6 +39,16 @@ export class OrderDetailsComponent implements OnInit {
   };
   errorMsg = '';
   auth = false;
+  constructor(
+    private order: OrderService,
+    private router: ActivatedRoute,
+    private productService: ProductService,
+    private sellerService: SellerService,
+    private authService: AuthCustomerService,
+    private route: Router,
+    private customerService: AuthService
+  ) {}
+
   ngOnInit(): void {
     this.router.paramMap.subscribe((param) => {
       this.id = param.get('id') as unknown as number;
@@ -58,11 +58,15 @@ export class OrderDetailsComponent implements OnInit {
         const decode = this.authService.getDecodedAccessToken(
           this.authService.getToken()
         );
-        if (decode.customer_id == null || !decode) {
+        if (res == null) {
           this.route.navigateByUrl('/');
           return;
         }
-        if (decode.role_id == 3 || decode.customer_id == res.customer_id) {
+        if (decode.seller_id == null || !decode) {
+          this.route.navigateByUrl('/');
+          return;
+        }
+        if (decode.seller_id == 3 || decode.seller_id == res.seller_id) {
           this.auth = true;
         } else {
           this.route.navigateByUrl('/');
@@ -72,10 +76,24 @@ export class OrderDetailsComponent implements OnInit {
     });
   }
 
+  getSellerDetails(id: number | undefined) {
+    this.sellerService.getSellerById(id).subscribe((res) => {
+      this.seller = res;
+      console.log(this.seller.shop_name);
+    });
+  }
+  getCustomerById() {
+    this.customerService
+      .getCustomerById(this.orderDetails[0].customer_id)
+      .subscribe((res) => {
+        this.customer = res;
+      });
+  }
   getOrderDetails(id: number) {
-    this.order.getOrderById(id).subscribe(
+    this.order.getOrderSellerById(id).subscribe(
       async (data) => {
         this.orderDetails = data;
+
         this.getCustomerById();
         this.getSellerDetails(this.orderDetails[0].seller_id);
 
@@ -97,7 +115,6 @@ export class OrderDetailsComponent implements OnInit {
       }
     );
   }
-
   async getProductDetails(id: number) {
     await this.productService.getProductDetails(id).subscribe((res) => {
       this.products.push(res);
@@ -114,19 +131,5 @@ export class OrderDetailsComponent implements OnInit {
       }
     }
     console.log(this.total);
-  }
-
-  getSellerDetails(id: number | undefined) {
-    this.sellerService.getSellerById(id).subscribe((res) => {
-      this.seller = res;
-      console.log(this.seller.shop_name);
-    });
-  }
-  getCustomerById() {
-    this.customerService
-      .getCustomerById(this.orderDetails[0].customer_id)
-      .subscribe((res) => {
-        this.customer = res;
-      });
   }
 }

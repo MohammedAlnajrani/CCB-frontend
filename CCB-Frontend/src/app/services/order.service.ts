@@ -18,6 +18,11 @@ export class OrderService {
       withCredentials: true,
     });
   }
+  getOrderSellerById(id: number): Observable<orders_details[]> {
+    return this.http.get<orders_details[]>(`${api}/seller/orders/${id}`, {
+      withCredentials: true,
+    });
+  }
   getOrderID(id: number): Observable<any> {
     return this.http.get<any>(`${api}/order/${id}`, {
       withCredentials: true,
