@@ -10,6 +10,7 @@ export interface product {
   city: string;
   neighborhood: string;
   seller_id: number;
+  qty: number;
   created_at?: string;
   category_id: number;
 }

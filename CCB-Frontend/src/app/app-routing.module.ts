@@ -32,12 +32,21 @@ const dashboardModule = () =>
   import('./admin-dashboard/admin-dashboard.module').then(
     (x) => x.AdminDashboardModule
   );
+const sellerDashboardModule = () =>
+  import('./seller-dashboard/seller-dashboard.module').then(
+    (x) => x.SellerDashboardModule
+  );
 const routes: Routes = [
   { path: 'account', loadChildren: accountModule },
   {
     path: 'admin-dashboard',
     loadChildren: dashboardModule,
     canActivate: [AuthGuardGuard, IsAdminGuard],
+  },
+  {
+    path: 'seller-dashboard',
+    loadChildren: sellerDashboardModule,
+    canActivate: [AuthGuardGuard, IsSellerGuard],
   },
   { path: 'seller-profile/:id', component: SellerProfileComponent },
   { path: 'order/:id', component: OrderDetailsComponent },
@@ -61,11 +70,6 @@ const routes: Routes = [
     canActivate: [AuthGuardGuard],
   },
 
-  {
-    path: 'seller-dashboard',
-    component: SellerDashboardComponent,
-    canActivate: [IsSellerGuard],
-  },
   { path: 'products/category/:id', component: CategoryProductsComponent },
   { path: 'products/:id', component: ProductDetailComponent },
   {
@@ -85,6 +89,7 @@ const routes: Routes = [
   {
     path: 'cart',
     component: CartComponent,
+    canActivate: [AuthGuardGuard],
   },
   { path: '**', component: NotFoundComponent },
 ];

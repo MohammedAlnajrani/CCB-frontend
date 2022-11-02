@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="seller-dashboard.component.css" />
+    <link rel="stylesheet" href="my-account.component.css" />
   </head>
   <body>
     <div class="container mt-4">
@@ -14,7 +14,7 @@
           <div id="sidebar" class="bg-purple">
             <div class="h4 text-white">Dashboard</div>
             <ul>
-              <li class="active">
+              <li>
                 <a
                   routerLink="../home"
                   class="text-decoration-none d-flex align-items-start"
@@ -26,7 +26,7 @@
                   </div>
                 </a>
               </li>
-              <li>
+              <li class="active">
                 <a
                   routerLink="../my-account"
                   class="text-decoration-none d-flex align-items-start"
@@ -68,30 +68,66 @@
         </div>
         <div class="col-lg-9 my-lg-0 my-1">
           <div id="main-content" class="bg-white border">
-            <div class="d-flex my-4 flex-wrap justify-content-around">
-              <div class="box me-4 my-1 bg-light">
-                <!-- <img
-                  src="https://cdn0.iconfinder.com/data/icons/cosmo-layout/40/box-512.png"
-                  alt=""
-                /> -->
-                <div class="tag">Total orders</div>
-                <div class="d-flex align-items-center mt-2">
-                  <div class="ms-auto number">
-                    {{ ordersBySellerList.length }}
+            <div class="col-md-12 text-center">
+              <h4>My account</h4>
+            </div>
+            <div class="card-body">
+              <form>
+                <!-- Form Row-->
+                <div class="row gx-3 mb-3">
+                  <!-- Form Group (first name)-->
+                  <div class="col-md-6">
+                    <label class="small mb-1" for="inputFirstName">Email</label>
+                    <input
+                      class="form-control"
+                      id="inputFirstName"
+                      type="email"
+                      placeholder="Enter your email"
+                      value="{{ seller.seller_email }}"
+                    />
+                  </div>
+                  <!-- Form Group (last name)-->
+                  <div class="col-md-6">
+                    <label class="small mb-1" for="inputLastName"
+                      >Shop name</label
+                    >
+                    <input
+                      class="form-control"
+                      id="inputLastName"
+                      type="text"
+                      placeholder="Enter your shop name"
+                      value="{{ seller.shop_name }}"
+                    />
                   </div>
                 </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <h4>Orders per month</h4>
-                <canvas
-                  id="barchart"
-                  width="700"
-                  height="250"
-                  #mychart
-                ></canvas>
-              </div>
+
+                <!-- Form Row-->
+                <div class="row gx-3 mb-3">
+                  <!-- Form Group (phone number)-->
+                  <div class="col-md-12">
+                    <label class="small mb-1" for="inputPhone"
+                      >Change Password</label
+                    >
+                    <input
+                      class="form-control"
+                      id="passwordInput"
+                      type="password"
+                      placeholder="Enter your password"
+                      value=""
+                    />
+                  </div>
+                </div>
+                <!-- Save changes button-->
+                <div class="d-flex justify-content-center mx-4 mb-3 mb-md-4">
+                  <button
+                    id="update"
+                    type="button"
+                    class="btn btn-primary btn-md"
+                  >
+                    Update
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         </div>

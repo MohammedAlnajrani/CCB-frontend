@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="orders.component.css" />
+    <link rel="stylesheet" href="products.component.css" />
   </head>
   <body>
     <div class="container mt-4">
@@ -21,36 +21,25 @@
                 >
                   <div class="fas fa-box pt-2 me-3"></div>
                   <div class="d-flex flex-column">
-                    <div class="link">Users statics</div>
-                    <div class="link-desc">View users & products statics</div>
+                    <div class="link">Statics</div>
+                    <div class="link-desc">View statics</div>
                   </div>
                 </a>
               </li>
               <li>
                 <a
-                  routerLink="../customers"
+                  routerLink="../my-account"
                   class="text-decoration-none d-flex align-items-start"
                 >
                   <div class="fas fa-box-open pt-2 me-3"></div>
                   <div class="d-flex flex-column">
-                    <div class="link">Customers</div>
-                    <div class="link-desc">View & Manage Customers</div>
+                    <div class="link">My account</div>
+                    <div class="link-desc">View my account</div>
                   </div>
                 </a>
               </li>
+
               <li>
-                <a
-                  routerLink="../sellers"
-                  class="text-decoration-none d-flex align-items-start"
-                >
-                  <div class="far fa-address-book pt-2 me-3"></div>
-                  <div class="d-flex flex-column">
-                    <div class="link">Sellers</div>
-                    <div class="link-desc">View & Manage Sellers</div>
-                  </div>
-                </a>
-              </li>
-              <li class="active">
                 <a
                   routerLink="../orders"
                   class="text-decoration-none d-flex align-items-start"
@@ -62,7 +51,7 @@
                   </div>
                 </a>
               </li>
-              <li>
+              <li class="active">
                 <a
                   routerLink="../products"
                   class="text-decoration-none d-flex align-items-start"
@@ -70,7 +59,7 @@
                   <div class="fas fa-headset pt-2 me-3"></div>
                   <div class="d-flex flex-column">
                     <div class="link">Products</div>
-                    <div class="link-desc">View & Manage Orders</div>
+                    <div class="link-desc">View & Manage Products</div>
                   </div>
                 </a>
               </li>
@@ -85,26 +74,17 @@
                   src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png"
                   alt=""
                 /> -->
-                <div class="tag">Orders in a week</div>
+                <div class="tag">Total products posted</div>
                 <div class="d-flex align-items-center mt-2">
                   <!-- <div class="tag">Register User</div> -->
-                  <div class="ms-auto number">{{ ordersLast7Days }}</div>
+                  <div class="ms-auto number">{{ productList.length }}</div>
                 </div>
               </div>
             </div>
-            <div class="row">
-              <div class="col-md-12">
-                <h4>Orders by month</h4>
-                <canvas
-                  id="barchart"
-                  width="700"
-                  height="250"
-                  #mychart
-                ></canvas>
-              </div>
+            <div class="col-md-12 text-center">
+              <h4>Manage Products</h4>
             </div>
-            <h4>Manage Orders</h4>
-            <div class="row" *ngFor="let order of orders">
+            <div class="row" *ngFor="let product of productList">
               <div class="col-md-12">
                 <div class="row">
                   <div class="col-md-12">
@@ -116,7 +96,7 @@
                           >
                             <div class="d-flex align-items-center">
                               <div class="text-uppercase">
-                                Order #{{ order.order_id }}
+                                {{ product.product_name }}
                               </div>
                               <div
                                 class="green-label ms-auto text-uppercase mx-3"
@@ -125,10 +105,8 @@
                               </div>
                             </div>
 
-                            <div class="fs-8">{{ order.order_date }}</div>
-                            <div class="fs-8">
-                              Pickup Authentication: {{ order.order_auth }}
-                            </div>
+                            <div class="fs-8">{{ product.created_at }}</div>
+
                             <!-- <div class="rating d-flex align-items-center pt-1">
                                                 <img src="https://www.freepnglogos.com/uploads/like-png/like-png-hand-thumb-sign-vector-graphic-pixabay-39.png"
                                                     alt=""><span class="px-2">Rating:</span>
@@ -144,28 +122,28 @@
                           <div
                             class="d-sm-flex align-items-sm-start justify-content-sm-between"
                           >
-                            <div class="status">
-                              Status : {{ order.order_status }}
-                            </div>
+                            <div class="status">City : {{ product.city }}</div>
 
                             <div
-                              class="btn btn-primary text-uppercase"
-                              (click)="orderDetails(order)"
+                              class="btn btn-primary text-uppercase p-1"
+                              (click)="productDetails(product)"
                             >
-                              order info
+                              product info
                             </div>
                             <div
-                              class="btn btn-secondary text-uppercase ml-3"
-                              routerLink="/seller/order/{{ order.order_id }}"
+                              class="btn btn-secondary text-uppercase ml-3 p-1"
+                              routerLink="/products/{{
+                                product.product_id
+                              }}/edit"
                             >
-                              update order
+                              update product
                             </div>
-                            <div
+                            <!-- <div
                               class="btn btn-danger text-uppercase"
-                              (click)="deleteOrder(order)"
+                              (click)="deleteProduct(product)"
                             >
-                              delete order
-                            </div>
+                              delete product
+                            </div> -->
                           </div>
                         </div>
                       </div>

@@ -58,7 +58,7 @@ export class OrderDetailsComponent implements OnInit {
         const decode = this.authService.getDecodedAccessToken(
           this.authService.getToken()
         );
-        if (decode.customer_id == null || !decode) {
+        if (!decode) {
           this.route.navigateByUrl('/');
           return;
         }
@@ -105,12 +105,11 @@ export class OrderDetailsComponent implements OnInit {
   }
 
   calculateTotal() {
-    console.log(this.products[0]);
+    let tempTotal = 0;
     for (let i = 0; i < this.products.length; i++) {
       if (this.products[i].product_id == this.orderDetails[i].product_id) {
-        const tempTotal =
-          this.products[i].price * this.orderDetails[i].quantity;
-        this.total += tempTotal;
+        tempTotal += this.products[i].price * this.orderDetails[i].quantity;
+        this.total = tempTotal;
       }
     }
     console.log(this.total);

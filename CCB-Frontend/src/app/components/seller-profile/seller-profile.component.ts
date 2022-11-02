@@ -4,6 +4,7 @@ import { SellerService } from 'src/app/services/seller.service';
 import { seller } from 'src/app/Model/seller/seller';
 import { product } from 'src/app/Model/product/product';
 import * as moment from 'moment';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-seller-profile',
@@ -23,7 +24,8 @@ export class SellerProfileComponent implements OnInit {
   productList: product[] = [];
   constructor(
     private sellerService: SellerService,
-    private router: ActivatedRoute
+    private router: ActivatedRoute,
+    private cartService: CartService
   ) {}
 
   ngOnInit(): void {
@@ -45,5 +47,8 @@ export class SellerProfileComponent implements OnInit {
       this.productList = res;
       console.log(this.productList);
     });
+  }
+  addToCart(product: product) {
+    this.cartService.addItem(product);
   }
 }

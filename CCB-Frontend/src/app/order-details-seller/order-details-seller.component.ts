@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
 import { customer } from '../Model/customer/customer';
@@ -23,7 +24,8 @@ export class OrderDetailsSellerComponent implements OnInit {
   public products: product[] = [];
   date: any;
   orderID: any;
-  order_auth: any;
+  order_auth: any = '';
+  form!: FormGroup;
   seller: seller = {
     seller_email: '',
     seller_password: '',
@@ -39,6 +41,7 @@ export class OrderDetailsSellerComponent implements OnInit {
   };
   errorMsg = '';
   auth = false;
+  status = '';
   constructor(
     private order: OrderService,
     private router: ActivatedRoute,
@@ -46,12 +49,17 @@ export class OrderDetailsSellerComponent implements OnInit {
     private sellerService: SellerService,
     private authService: AuthCustomerService,
     private route: Router,
-    private customerService: AuthService
+    private customerService: AuthService,
+    private formBuilder: FormBuilder
   ) {}
 
   ngOnInit(): void {
     this.router.paramMap.subscribe((param) => {
       this.id = param.get('id') as unknown as number;
+      this.form = this.formBuilder.group({
+        id: this.id,
+        order_auth: '',
+      });
       this.getOrderDetails(this.id);
       //check if auth to view order or not
       this.order.getOrderID(this.id).subscribe((res) => {
@@ -62,16 +70,17 @@ export class OrderDetailsSellerComponent implements OnInit {
           this.route.navigateByUrl('/');
           return;
         }
-        if (decode.seller_id == null || !decode) {
+        if (!decode) {
           this.route.navigateByUrl('/');
           return;
         }
-        if (decode.seller_id == 3 || decode.seller_id == res.seller_id) {
+        if (decode.role_id == 3 || decode.seller_id == res.seller_id) {
           this.auth = true;
         } else {
           this.route.navigateByUrl('/');
           return;
         }
+        this.status = res.order_status;
       });
     });
   }
@@ -131,5 +140,22 @@ export class OrderDetailsSellerComponent implements OnInit {
       }
     }
     console.log(this.total);
+  }
+
+  updateOrder() {
+    const order_auth = { order_auth: this.form.get('order_auth')?.value };
+    console.log(order_auth);
+    this.order.updateOrder(this.id, order_auth).subscribe(
+      (data: any) => {
+        this.errorMsg = '';
+        //wait 2 seconds and navigate
+
+        window.location.reload();
+      },
+      (err) => {
+        console.log(err);
+        this.errorMsg = err.error;
+      }
+    );
   }
 }

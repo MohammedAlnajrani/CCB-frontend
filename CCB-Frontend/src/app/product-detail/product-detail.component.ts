@@ -4,6 +4,7 @@ import * as moment from 'moment';
 import { product } from '../Model/product/product';
 import { review } from '../Model/review/review';
 import { AuthCustomerService } from '../services/auth-customer.service';
+import { CartService } from '../services/cart.service';
 import { AuthService } from '../services/customer/auth.service';
 import { ProductService } from '../services/product/product.service';
 import { ReviewService } from '../services/review/review.service';
@@ -32,6 +33,7 @@ export class ProductDetailComponent implements OnInit {
     city: '',
     neighborhood: '',
     seller_id: 0,
+    qty: 0,
     category_id: 0,
   };
   auth = false;
@@ -51,7 +53,8 @@ export class ProductDetailComponent implements OnInit {
     private token: AuthCustomerService,
     private sellerService: SellerService,
     private authService: AuthCustomerService,
-    private route: Router
+    private route: Router,
+    private cartService: CartService
   ) {}
 
   ngOnInit(): void {
@@ -146,5 +149,9 @@ export class ProductDetailComponent implements OnInit {
         this.shopName = res.shop_name;
         console.log(this.shopName);
       });
+  }
+
+  addToCart(product: product) {
+    this.cartService.addItem(product);
   }
 }

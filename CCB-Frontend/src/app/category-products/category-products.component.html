@@ -40,12 +40,18 @@
     <div class="d-flex flex-column mt-4">
       <div
         class="d-flex flex-column mt-4"
-        *ngIf="product.product_quantity >= 1 && product.product_quantity < 5"
+        *ngIf="product.product_quantity >= 1"
       >
-        <button class="btn btn-primary btn-lg btn-sm" type="button">
+        <button
+          class="btn btn-primary btn-lg btn-sm"
+          type="button"
+          (click)="addToCart(product)"
+        >
           Add to cart
         </button>
-        <span class="text-danger font-weight-bold"
+        <span
+          class="text-danger font-weight-bold"
+          *ngIf="product.product_quantity < 5 && product.product_quantity >= 1"
           >Only {{ product.product_quantity }} Left</span
         >
       </div>

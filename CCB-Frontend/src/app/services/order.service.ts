@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { orders_details } from '../Model/order_details';
+import { product } from '../Model/product/product';
 
 let api = environment.apiUrl;
 
@@ -18,8 +19,18 @@ export class OrderService {
       withCredentials: true,
     });
   }
+  updateOrder(id: number, order_auth: any) {
+    return this.http.put(`${api}/orders/${id}`, order_auth, {
+      withCredentials: true,
+    });
+  }
   getOrderSellerById(id: number): Observable<orders_details[]> {
     return this.http.get<orders_details[]>(`${api}/seller/orders/${id}`, {
+      withCredentials: true,
+    });
+  }
+  getAllOrdersBySeller(): Observable<orders[]> {
+    return this.http.get<orders[]>(`${api}/orders/seller`, {
       withCredentials: true,
     });
   }
@@ -35,6 +46,17 @@ export class OrderService {
   }
   getAllOrdersByCustomer(): Observable<orders> {
     return this.http.get<orders>(`${api}/orders/customer`, {
+      withCredentials: true,
+    });
+  }
+
+  sellerOrdersPerMonth() {
+    return this.http.get(`${api}/sellerOrdersByMonth`, {
+      withCredentials: true,
+    });
+  }
+  checkout(prodcut: product[]) {
+    return this.http.post(`${api}/orders/new`, prodcut, {
       withCredentials: true,
     });
   }

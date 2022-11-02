@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { product } from '../Model/product/product';
+import { CartService } from '../services/cart.service';
 import { CategoryService } from '../services/category/category.service';
 
 @Component({
@@ -16,7 +17,8 @@ export class CategoryProductsComponent implements OnInit {
   constructor(
     private category: CategoryService,
     private router: ActivatedRoute,
-    private redirect: Router
+    private redirect: Router,
+    private cartService: CartService
   ) {
     this.id = this.router.snapshot.params.id;
   }
@@ -42,5 +44,8 @@ export class CategoryProductsComponent implements OnInit {
         this.redirect.navigateByUrl('/not-found');
       }
     );
+  }
+  addToCart(product: product) {
+    this.cartService.addItem(product);
   }
 }

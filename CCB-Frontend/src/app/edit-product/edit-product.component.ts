@@ -26,6 +26,7 @@ export class EditProductComponent implements OnInit {
     city: '',
     neighborhood: '',
     seller_id: 0,
+    qty: 0,
     category_id: 0,
   };
   constructor(

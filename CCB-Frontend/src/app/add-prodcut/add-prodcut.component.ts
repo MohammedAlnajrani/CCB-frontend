@@ -22,6 +22,7 @@ export class AddProdcutComponent implements OnInit {
     lat: 0,
     lan: 0,
     city: '',
+    qty: 0,
     neighborhood: '',
     seller_id: 0,
     category_id: 0,

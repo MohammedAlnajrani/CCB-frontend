@@ -1,8 +1,6 @@
 <div *ngIf="!auth"></div>
-<div class="row m-auto" *ngIf="errorMsg">
-  <h3>{{ errorMsg }}</h3>
-</div>
-<div *ngIf="!errorMsg && auth">
+
+<div *ngIf="auth">
   <div
     class="d-flex flex-column justify-content-center align-items-center"
     id="order-heading"
@@ -72,6 +70,36 @@
     >
       <div class="text-muted">Total</div>
       <div class="ml-auto h5">{{ total | currency: "SAR" }}</div>
+    </div>
+    <div *ngIf="status == 'New'">
+      <div class="pl-3 py-3 mb-4 border-bottom m-auto">
+        <div class="text-center">
+          Enter pickup authentication code to update order status to complete
+        </div>
+
+        <form [formGroup]="form">
+          <div class="text-center my-3">
+            <input
+              type="text"
+              maxlength="6"
+              required
+              formControlName="order_auth"
+              placeholder="Auth code"
+            />
+          </div>
+        </form>
+        <div class="text-center">
+          <div class="btn btn-primary text-uppercase" (click)="updateOrder()">
+            Update
+          </div>
+        </div>
+        <div *ngIf="errorMsg" class="bg-danger text-center text-white mt-3">
+          {{ errorMsg }}
+        </div>
+      </div>
+    </div>
+    <div *ngIf="status == 'Complete'" class="text-center bg-success text-white">
+      Order status is complete
     </div>
   </div>
 </div>
