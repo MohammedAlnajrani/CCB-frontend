@@ -30,6 +30,7 @@ export class CartService {
       seller_id: 0,
       qty: 0,
       category_id: 0,
+      product_thumbnail: '',
     };
 
     if (storage)

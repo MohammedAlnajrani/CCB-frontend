@@ -72,6 +72,9 @@
                       <div class="row">
                         <div class="col-md-6 mb-4">
                           <div class="form-outline">
+                            <label for="price" class="form-label"
+                              >Determine price
+                            </label>
                             <input
                               formControlName="price"
                               type="number"
@@ -84,6 +87,10 @@
                           </div>
                         </div>
                         <div class="col-md-4 mb-4">
+                          <label for="tags" class="form-label"
+                            >Choose tags
+                            <span class="text-muted">Optional</span></label
+                          >
                           <select
                             class="form-select-lg"
                             id="Tag"
@@ -100,7 +107,7 @@
                             </optgroup>
                             <optgroup label="PC">
                               <option value="Gaming PC">Gaming PC</option>
-                              <option value="business PC">Business PC</option>
+                              <option value="business PC">Work PC</option>
                               <option value="study PC">Student PC</option>
                             </optgroup>
                             <optgroup label="Laptop">
@@ -108,17 +115,23 @@
                                 Gaming Laptop
                               </option>
                               <option value="Business Laptop">
-                                Business Laptop
+                                Work Laptop
                               </option>
                               <option value="Study Laptop">
                                 Student Laptop
                               </option>
                             </optgroup>
                           </select>
+                          <span class="text-muted"
+                            >Improves product visibility</span
+                          >
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-md-6 mb-4">
+                          <label for="Category" class="form-label"
+                            >Choose category</label
+                          >
                           <select
                             class="form-select-lg"
                             id="Category"
@@ -139,16 +152,31 @@
                             </optgroup>
                           </select>
                         </div>
-                        <div class="col-md-6 mb-4">
-                          <input
-                            class="form-control"
-                            type="file"
-                            id="formFile"
-                            onchange="preview()"
-                          />
+                        <div class="col-md-12 mb-4">
                           <label for="Image" class="form-label"
                             >Upload Product Image</label
                           >
+                          <!-- in app.component.html -->
+                          <ngx-dropzone
+                            [multiple]="false"
+                            accept="image/jpeg,image/jpg,image/png"
+                            (change)="onSelect($event)"
+                          >
+                            <ngx-dropzone-label
+                              >Drop the images!</ngx-dropzone-label
+                            >
+                            <ngx-dropzone-image-preview
+                              ngProjectAs="ngx-dropzone-preview"
+                              *ngFor="let f of files"
+                              [file]="f"
+                              [removable]="true"
+                              (removed)="onRemove(f)"
+                            >
+                              <ngx-dropzone-label
+                                >({{ f.type }})</ngx-dropzone-label
+                              >
+                            </ngx-dropzone-image-preview>
+                          </ngx-dropzone>
                         </div>
                         <div class="col-md-12">
                           <label for="exampleFormControlTextarea1"
@@ -237,7 +265,7 @@
                         [dismissible]="true"
                         type="success"
                       >
-                        <strong>Successfully registered</strong>
+                        <strong>Successfully created product</strong>
                       </ngb-alert>
                       <div class="d-flex justify-content-end pt-3">
                         <button
@@ -249,7 +277,7 @@
                         <button
                           type="button"
                           class="btn btn-primary btn-lg ms-2"
-                          (click)="addProduct()"
+                          (click)="upload()"
                         >
                           Add the product
                         </button>

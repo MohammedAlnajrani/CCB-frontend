@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:3000',
+  cdnApi: 'https://api.cloudinary.com/v1_1/dcwbp2n3u/image/upload',
 };
 
 /*
