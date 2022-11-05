@@ -28,10 +28,9 @@
               [(ngModel)]="city"
             >
               <option selected value="">All cities</option>
-              <option value="Jeddah">Jeddah</option>
-              <option value="Riyadh">Riyadh</option>
-              <option value="Dammam">Dammam</option>
-              <option value="Makkah">Makkah</option>
+              <option *ngFor="let city of cities" value="{{ city.city }}">
+                {{ city.city }}
+              </option>
             </select>
           </div>
           <div class="col-md-5">
@@ -154,23 +153,6 @@
                 >Dashboard</a
               >
             </li>
-            <!-- <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              id="navbarDropdownMenuLink"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Mobiles
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <li><a class="dropdown-item" href="#">Smart Phones</a></li>
-              <li><a class="dropdown-item" href="#">Feature Phones</a></li>
-              <li><a class="dropdown-item" href="#">Mobile Covers</a></li>
-            </ul>
-          </li> -->
           </ul>
         </div>
       </div>

@@ -5,6 +5,7 @@ import { faL } from '@fortawesome/free-solid-svg-icons';
 import { AuthCustomerService } from '../services/auth-customer.service';
 import { CartService } from '../services/cart.service';
 import { CategoryService } from '../services/category/category.service';
+import { ProductService } from '../services/product/product.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -20,6 +21,7 @@ export class NavBarComponent implements OnInit {
   decode: any = '';
   query = '';
   city = '';
+  cities: any[] = [];
   form!: FormGroup;
   itemsInCart: any = 0;
   constructor(
@@ -28,7 +30,8 @@ export class NavBarComponent implements OnInit {
     private category: CategoryService,
     private router: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private cartService: CartService
+    private cartService: CartService,
+    private productService: ProductService
   ) {
     this.form = this.formBuilder.group({
       query: '',
@@ -37,6 +40,7 @@ export class NavBarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getCities();
     this.cartService.numberOfItems.subscribe((res: any) => {
       this.itemsInCart = res.length;
     });
@@ -68,5 +72,11 @@ export class NavBarComponent implements OnInit {
     if (this.city.length < 2)
       this.route.navigateByUrl(`/search?q=${this.query}&city=all`);
     else this.route.navigateByUrl(`/search?q=${this.query}&city=${this.city}`);
+  }
+
+  getCities() {
+    this.productService.getAllCities().subscribe((res) => {
+      this.cities = res;
+    });
   }
 }

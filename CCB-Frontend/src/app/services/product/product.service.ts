@@ -26,6 +26,11 @@ export class ProductService {
       withCredentials: true,
     });
   }
+  getAllCities(): Observable<string[]> {
+    return this.http.get<string[]>(`${api}/cities`, {
+      withCredentials: true,
+    });
+  }
   updateProduct(product: any): Observable<product> {
     return this.http.put<product>(
       `${api}/product/${product.product_id}`,
