@@ -198,11 +198,35 @@
                               </div> -->
                       <hr />
                       <h5 class="mb-3 text-uppercase">Location</h5>
+                      <agm-map
+                        [restriction]="countryRestriction"
+                        (mapReady)="onMapReady($event)"
+                        [latitude]="lat"
+                        [longitude]="lng"
+                        [zoom]="zoom"
+                        [disableDefaultUI]="false"
+                        [zoomControl]="false"
+                        (mapClick)="mapClicked($event)"
+                      >
+                        <agm-marker
+                          (markerClick)="markerClicked(marker, infoWindowRef)"
+                          [latitude]="marker.lat"
+                          [longitude]="marker.lng"
+                          [label]="marker.label"
+                          [markerDraggable]="marker.draggable"
+                          (dragEnd)="markerDragEnd($event)"
+                        >
+                          <agm-info-window #infoWindowRef>
+                            <b>{{ marker.lat }}, {{ marker.lng }}</b>
+                          </agm-info-window>
+                        </agm-marker>
+                      </agm-map>
 
-                      <div class="row">
+                      <div class="row mt-3">
                         <div class="col-md-6 mb-4">
                           <div class="form-outline">
                             <input
+                              [readonly]="true"
                               formControlName="neighborhood"
                               type="text"
                               id="Neighborhood"
@@ -212,18 +236,14 @@
                           </div>
                         </div>
                         <div class="col-md-6 mb-4">
-                          <select
-                            class="form-select-lg"
-                            id="City"
+                          <input
+                            [readonly]="true"
                             formControlName="city"
-                          >
-                            <option disabled hidden selected value="city">
-                              City
-                            </option>
-                            <option value="Jeddah">Jeddah</option>
-                            <option value="Riyadh">Riyadh</option>
-                            <option value="Dammam">Dammam</option>
-                          </select>
+                            type="text"
+                            id="Neighborhood"
+                            class="form-control form-control-lg"
+                            placeholder="City"
+                          />
                         </div>
                       </div>
                       <div class="row">
@@ -231,6 +251,7 @@
                           <div class="form-outline">
                             <label class="form-label" for="lat">Latitude</label>
                             <input
+                              [readonly]="true"
                               formControlName="lat"
                               type="text"
                               id="lat"
@@ -245,6 +266,7 @@
                               >Longitude</label
                             >
                             <input
+                              [readonly]="true"
                               type="text"
                               formControlName="lan"
                               id="lan"

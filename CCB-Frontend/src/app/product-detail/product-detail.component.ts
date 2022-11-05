@@ -5,7 +5,8 @@ import { product } from '../Model/product/product';
 import { review } from '../Model/review/review';
 import { AuthCustomerService } from '../services/auth-customer.service';
 import { CartService } from '../services/cart.service';
-import { AuthService } from '../services/customer/auth.service';
+import { Pipe, PipeTransform, SecurityContext } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ProductService } from '../services/product/product.service';
 import { ReviewService } from '../services/review/review.service';
 import { SellerService } from '../services/seller.service';
@@ -46,6 +47,8 @@ export class ProductDetailComponent implements OnInit {
     customer_id: 0,
     cus_first_name: '',
   };
+  url: any;
+  santized!: SafeResourceUrl;
   constructor(
     private productService: ProductService,
     private router: ActivatedRoute,
@@ -55,7 +58,8 @@ export class ProductDetailComponent implements OnInit {
     private sellerService: SellerService,
     private authService: AuthCustomerService,
     private route: Router,
-    private cartService: CartService
+    private cartService: CartService,
+    private sanitizer: DomSanitizer
   ) {}
 
   ngOnInit(): void {
@@ -73,6 +77,22 @@ export class ProductDetailComponent implements OnInit {
       if (this.product == null) {
         this.route.navigateByUrl('/not-found');
       }
+      this.url =
+        'https://www.google.com/maps/embed/v1/place?key=AIzaSyB9mWCmDoK-CHJO491k4R_R4ZyF4w-Dp84&q=' +
+        this.product.lat +
+        ',' +
+        this.product.lan +
+        '';
+
+      let sanitizedUrl: SafeResourceUrl = this.sanitizer.sanitize(
+        SecurityContext.URL,
+        this.url.toString()
+      ) as unknown as string;
+      console.log(this.url);
+      this.santized = this.sanitizer.bypassSecurityTrustResourceUrl(
+        'https://maps.google.com/maps?q=21.48123371708128,39.19007964217564&hl=en&z=14&amp;output=embed'
+      );
+
       this.getSellerInfo();
       const decode = this.authService.getDecodedAccessToken(
         this.authService.getToken()

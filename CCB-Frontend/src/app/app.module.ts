@@ -31,6 +31,8 @@ import { EditProductComponent } from './edit-product/edit-product.component';
 import { OrderDetailsSellerComponent } from './order-details-seller/order-details-seller.component';
 import { CartComponent } from './cart/cart.component';
 import { NgxDropzoneModule } from 'ngx-dropzone';
+import { AgmCoreModule } from '@agm/core';
+import { SafePipe } from './safe.pipe';
 
 @NgModule({
   declarations: [
@@ -58,6 +60,7 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     EditProductComponent,
     OrderDetailsSellerComponent,
     CartComponent,
+    SafePipe,
   ],
   imports: [
     BrowserModule,
@@ -67,6 +70,10 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     FormsModule,
     ReactiveFormsModule,
     NgxDropzoneModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyB9mWCmDoK-CHJO491k4R_R4ZyF4w-Dp84',
+      language: 'en',
+    }),
   ],
   providers: [AuthGuardGuard],
   bootstrap: [AppComponent],

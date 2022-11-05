@@ -5,6 +5,7 @@ import { product } from '../Model/product/product';
 import { AuthCustomerService } from '../services/auth-customer.service';
 import { ProductService } from '../services/product/product.service';
 import { UploadService } from '../services/upload.service';
+import { google } from 'google-maps';
 
 @Component({
   selector: 'app-edit-product',
@@ -32,6 +33,21 @@ export class EditProductComponent implements OnInit {
     product_thumbnail: '',
   };
   files: File[] = [];
+  zoom: number = 15;
+  lat: number = 21.48987;
+  lng: number = 39.246833;
+  lastInfoWindow: any;
+  marker: any = {};
+  countryRestriction = {
+    latLngBounds: {
+      east: 50.2,
+      north: 28.77,
+      south: 18,
+      west: 38,
+    },
+    strictBounds: true,
+  };
+
   constructor(
     private formBuilder: FormBuilder,
     private router: ActivatedRoute,
@@ -46,7 +62,7 @@ export class EditProductComponent implements OnInit {
       product_thumbnail: '',
       product_quantity: '',
       product_description: '',
-      tags: 2,
+      tags: '',
       price: '',
       lat: 0,
       lan: 0,
@@ -60,6 +76,85 @@ export class EditProductComponent implements OnInit {
     this.router.paramMap.subscribe((param) => {
       this.id = param.get('id') as unknown as number;
       this.getProductDetails(this.id);
+    });
+  }
+  onMapReady(map?: google.maps.Map) {
+    if (map)
+      map.setOptions({
+        streetViewControl: false,
+        fullscreenControl: false,
+      });
+    console.log(map);
+  }
+
+  markerClicked(marker: any, infoWindowRef: any) {
+    if (this.lastInfoWindow) {
+      this.lastInfoWindow.close();
+    }
+    this.lastInfoWindow = infoWindowRef;
+  }
+
+  async mapClicked($event: any) {
+    this.marker = {
+      lat: $event.coords.lat,
+      lng: $event.coords.lng,
+
+      draggable: true,
+    };
+    const address: any = await this.getAddress(
+      $event.coords.lat,
+      $event.coords.lng
+    );
+    console.log(this.marker.lat);
+    console.log(this.marker.lng);
+    this.form.patchValue({
+      lat: this.marker.lat,
+    });
+    this.form.patchValue({
+      lan: this.marker.lng,
+    });
+
+    for (const add of address.address_components) {
+      console.log(add);
+      if (add.types.includes('political')) {
+        console.log('Neighboor ' + add.short_name);
+        this.form.patchValue({
+          neighborhood: `${add.short_name}`,
+        });
+        break;
+      }
+      this.form.patchValue({
+        neighborhood: '',
+      });
+    }
+    for (const add of address.address_components) {
+      if (add.types.includes('locality')) {
+        console.log('City ' + add.short_name);
+        this.form.patchValue({
+          city: `${add.short_name}`,
+        });
+        break;
+      }
+      this.form.patchValue({
+        city: '',
+      });
+    }
+  }
+
+  markerDragEnd($event: any) {
+    console.log($event.coords.lat);
+    console.log($event.coords.lng);
+  }
+  getAddress(lat: number, lng: number) {
+    const geocoder = new google.maps.Geocoder();
+    const latlng = new google.maps.LatLng(lat, lng);
+    const request: any = {
+      latLng: latlng,
+    };
+    return new Promise((resolve, reject) => {
+      geocoder.geocode(request, (results: any) => {
+        results.length ? resolve(results[0]) : reject(null);
+      });
     });
   }
 
