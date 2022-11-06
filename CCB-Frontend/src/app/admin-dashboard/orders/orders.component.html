@@ -129,6 +129,9 @@
                             <div class="fs-8">
                               Pickup Authentication: {{ order.order_auth }}
                             </div>
+                            <div class="status">
+                              Status : {{ order.order_status }}
+                            </div>
                             <!-- <div class="rating d-flex align-items-center pt-1">
                                                 <img src="https://www.freepnglogos.com/uploads/like-png/like-png-hand-thumb-sign-vector-graphic-pixabay-39.png"
                                                     alt=""><span class="px-2">Rating:</span>
@@ -144,10 +147,6 @@
                           <div
                             class="d-sm-flex align-items-sm-start justify-content-sm-between"
                           >
-                            <div class="status">
-                              Status : {{ order.order_status }}
-                            </div>
-
                             <div
                               class="btn btn-primary text-uppercase"
                               (click)="orderDetails(order)"
