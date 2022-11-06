@@ -1,3 +1,8 @@
 .header {
   background-color: #f7743c;
 }
+
+body {
+
+  height: 100vh;
+}

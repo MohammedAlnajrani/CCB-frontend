@@ -1,6 +1,11 @@
+body{
+
+  height: 100vh;
+}
 agm-map {
   height: 400px;
 }
+
 
 .card-container {
   background-color: #eee;

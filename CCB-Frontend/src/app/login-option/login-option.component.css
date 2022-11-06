@@ -2,6 +2,9 @@
   margin-top: 5%;
   margin-bottom: 5%;
 }
+body{
+  height:100vh ;
+}
 .login-logo {
   position: relative;
   margin-left: -41.5%;
