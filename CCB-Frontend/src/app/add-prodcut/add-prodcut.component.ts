@@ -192,9 +192,6 @@ export class AddProdcutComponent implements OnInit {
         (data: any) => {
           this.errorMsg = '';
 
-          // setTimeout(() => {
-          //
-          // }, 1000);
           this.router.navigateByUrl(`/products/${data.product_id}`);
         },
         (err) => {

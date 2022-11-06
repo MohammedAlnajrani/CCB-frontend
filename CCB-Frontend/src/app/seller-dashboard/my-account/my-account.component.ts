@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { seller } from 'src/app/Model/seller/seller';
 import { AuthCustomerService } from 'src/app/services/auth-customer.service';
 import { SellerService } from 'src/app/services/seller.service';
@@ -9,6 +10,8 @@ import { SellerService } from 'src/app/services/seller.service';
   styleUrls: ['./my-account.component.css'],
 })
 export class MyAccountComponent implements OnInit {
+  errorMsg = '';
+  form!: FormGroup;
   seller: seller = {
     seller_email: '',
     seller_password: '',
@@ -17,8 +20,16 @@ export class MyAccountComponent implements OnInit {
   };
   constructor(
     private sellerService: SellerService,
-    private customerAuth: AuthCustomerService
-  ) {}
+    private customerAuth: AuthCustomerService,
+    private formBuilder: FormBuilder
+  ) {
+    this.form = this.formBuilder.group({
+      seller_email: '',
+      seller_password: '',
+      shop_name: '',
+      seller_id: '',
+    });
+  }
 
   ngOnInit(): void {
     this.getSellerInfo();
@@ -29,6 +40,12 @@ export class MyAccountComponent implements OnInit {
       this.customerAuth.getToken()
     );
     this.seller = decode;
-    console.log(this.seller);
+    this.form.setValue({
+      seller_email: decode.seller_email,
+      seller_password: '',
+      shop_name: decode.shop_name,
+      seller_id: decode.seller_id,
+    });
   }
+  updateSeller() {}
 }

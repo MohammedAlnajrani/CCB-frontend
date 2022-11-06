@@ -84,7 +84,6 @@ export class EditProductComponent implements OnInit {
         streetViewControl: false,
         fullscreenControl: false,
       });
-    console.log(map);
   }
 
   markerClicked(marker: any, infoWindowRef: any) {
@@ -219,26 +218,32 @@ export class EditProductComponent implements OnInit {
         this.form.patchValue({
           product_thumbnail: `${img_url}`,
         });
-        this.productService
-          .updateProduct(this.form.getRawValue())
-          .subscribe((res) => {
+        this.productService.updateProduct(this.form.getRawValue()).subscribe(
+          (res) => {
             setTimeout(() => {
               this.route.navigateByUrl(`products/${this.id}`);
             }, 1000);
 
             this.added = true;
-          });
+          },
+          (err) => {
+            this.errorMsg = err.error;
+          }
+        );
       });
     } else {
-      this.productService
-        .updateProduct(this.form.getRawValue())
-        .subscribe((res) => {
+      this.productService.updateProduct(this.form.getRawValue()).subscribe(
+        (res) => {
           setTimeout(() => {
             this.route.navigateByUrl(`products/${this.id}`);
           }, 1000);
 
           this.added = true;
-        });
+        },
+        (err) => {
+          this.errorMsg = err.error;
+        }
+      );
     }
   }
 }

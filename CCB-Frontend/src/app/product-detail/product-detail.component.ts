@@ -134,7 +134,10 @@ export class ProductDetailComponent implements OnInit {
       cus_first_name: decode.cus_first_name,
     };
 
-    console.log(this.reviewPost);
+    if (this.reviewPost.rating < 1 || this.reviewPost.rating > 5) {
+      this.errorMsg = 'Invalid rating rating must be between 1 and 5';
+      return;
+    }
 
     this.review.postReview(this.reviewPost).subscribe(
       (data: any) => {

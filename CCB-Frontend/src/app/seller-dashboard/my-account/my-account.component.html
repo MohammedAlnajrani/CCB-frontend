@@ -72,7 +72,7 @@
               <h4>My account</h4>
             </div>
             <div class="card-body">
-              <form>
+              <form [formGroup]="form">
                 <!-- Form Row-->
                 <div class="row gx-3 mb-3">
                   <!-- Form Group (first name)-->
@@ -83,7 +83,7 @@
                       id="inputFirstName"
                       type="email"
                       placeholder="Enter your email"
-                      value="{{ seller.seller_email }}"
+                      formControlName="seller_email"
                     />
                   </div>
                   <!-- Form Group (last name)-->
@@ -96,7 +96,7 @@
                       id="inputLastName"
                       type="text"
                       placeholder="Enter your shop name"
-                      value="{{ seller.shop_name }}"
+                      formControlName="shop_name"
                     />
                   </div>
                 </div>
@@ -113,16 +113,19 @@
                       id="passwordInput"
                       type="password"
                       placeholder="Enter your password"
-                      value=""
+                      formControlName="seller_password"
                     />
                   </div>
                 </div>
-                <!-- Save changes button-->
+                <div class="alert alert-danger" *ngIf="errorMsg.length > 1">
+                  {{ errorMsg }}
+                </div>
                 <div class="d-flex justify-content-center mx-4 mb-3 mb-md-4">
                   <button
                     id="update"
                     type="button"
                     class="btn btn-primary btn-md"
+                    (click)="updateSeller()"
                   >
                     Update
                   </button>

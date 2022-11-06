@@ -6,18 +6,20 @@ import { LayoutComponent } from './layout/layout.component';
 import { MyAccountComponent } from './my-account/my-account.component';
 import { OrdersComponent } from './orders/orders.component';
 import { ProductsComponent } from './products/products.component';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     LayoutComponent,
     MyAccountComponent,
     OrdersComponent,
-    ProductsComponent
+    ProductsComponent,
   ],
   imports: [
     CommonModule,
-    SellerDashboardRoutingModule
-  ]
+    SellerDashboardRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
 })
-export class SellerDashboardModule { }
+export class SellerDashboardModule {}

@@ -55,7 +55,7 @@ export class CartComponent implements OnInit {
   clearAllProducts() {
     this.items = [];
     this.cartService.setCart(this.items);
-    // window.location.reload();
+    window.location.reload();
   }
   checkout() {
     this.orderService.checkout(this.items).subscribe(
@@ -65,7 +65,6 @@ export class CartComponent implements OnInit {
 
         setTimeout(() => {
           this.clearAllProducts();
-          this.router.navigateByUrl(`order/${res.order_id}`);
         }, 2000);
       },
       (err) => {

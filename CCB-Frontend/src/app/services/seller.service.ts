@@ -19,4 +19,8 @@ export class SellerService {
   getAllProductsFromSeller(id: number): Observable<product[]> {
     return this.http.get<product[]>(`${api}/products/seller/${id}`);
   }
+
+  updateSeller(s: seller) {
+    return this.http.put(`${api}/seller/${s.seller_id}`, s);
+  }
 }
