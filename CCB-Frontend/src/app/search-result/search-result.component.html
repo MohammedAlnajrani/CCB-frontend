@@ -56,7 +56,7 @@
               *ngIf="product.product_quantity < 5"
               >Only {{ product.product_quantity }} Left</span
             >
-            <button class="btn btn-primary btn-lg btn-sm" type="button">
+            <button class="btn btn-primary btn-lg btn-sm" type="button" (click)="addToCart(product)">
               Add to cart
             </button>
           </div>

@@ -16,14 +16,14 @@ export class CustomersComponent implements OnInit {
   constructor(
     private adminDashboard: AdminDashboardService,
     private modalService: NgbModal
-  ) {}
+  ) { }
 
   open(content: any, customer: any) {
     this.modalService
       .open(content, { ariaLabelledBy: 'modal-basic-title' })
       .result.then(
         (result) => {
-          this.closeResult = `Closed with: ${result}`;
+          // this.closeResult = `Closed with: ${result}`;
         },
         (reason) => {
           // this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;

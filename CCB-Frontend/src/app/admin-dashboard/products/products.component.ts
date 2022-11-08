@@ -26,7 +26,7 @@ export class ProductsComponent implements OnInit {
     private productService: ProductService,
     private adminService: AdminDashboardService,
     private categoryService: CategoryService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.adminService.productsLastMonth().subscribe((res: any) => {
@@ -116,7 +116,9 @@ export class ProductsComponent implements OnInit {
     ) {
       this.adminService
         .deleteProduct(product.product_id)
-        .subscribe((res) => {});
+        .subscribe((res) => {
+          window.location.reload()
+        });
     } else {
       console.log(`canceled product with id ${product.product_id}`);
     }

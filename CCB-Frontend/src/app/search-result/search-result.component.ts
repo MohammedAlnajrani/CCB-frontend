@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { product } from '../Model/product/product';
+import { CartService } from '../services/cart.service';
 import { SearchService } from '../services/search.service';
 
 @Component({
@@ -14,8 +15,9 @@ export class SearchResultComponent implements OnInit {
   productList: product[] = [];
   constructor(
     private route: ActivatedRoute,
-    private searchService: SearchService
-  ) {}
+    private searchService: SearchService,
+    private cartService: CartService
+  ) { }
 
   ngOnInit(): void {
     this.searchProduct();
@@ -32,4 +34,9 @@ export class SearchResultComponent implements OnInit {
         });
     });
   }
+
+  addToCart(product: product) {
+    this.cartService.addItem(product);
+  }
+
 }

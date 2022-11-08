@@ -151,6 +151,12 @@
                               product info
                             </div>
                             <div
+                              class="btn btn-danger text-uppercase p-1"
+                              (click)="deleteProduct(product)"
+                            >
+                              Delete product
+                            </div>
+                            <div
                               class="btn btn-secondary text-uppercase ml-3 p-1"
                               routerLink="/products/{{
                                 product.product_id

@@ -9,7 +9,7 @@ const api = environment.apiUrl;
   providedIn: 'root',
 })
 export class ProductService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getProductDetails(id: number): Observable<product> {
     return this.http.get<product>(`${api}/product/${id}`);
@@ -28,6 +28,11 @@ export class ProductService {
   }
   getAllCities(): Observable<string[]> {
     return this.http.get<string[]>(`${api}/cities`, {
+      withCredentials: true,
+    });
+  }
+  deleteProduct(id: number) {
+    return this.http.delete(`${api}/product/${id}`, {
       withCredentials: true,
     });
   }

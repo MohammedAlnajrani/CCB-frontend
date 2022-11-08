@@ -17,7 +17,7 @@ export class ProductsComponent implements OnInit {
     private productService: ProductService,
     private route: Router,
     private adminService: AdminDashboardService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getAllProducts();
@@ -46,7 +46,9 @@ export class ProductsComponent implements OnInit {
     ) {
       this.adminService
         .deleteProduct(product.product_id)
-        .subscribe((res) => {});
+        .subscribe((res) => {
+          window.location.reload()
+        });
     } else {
       console.log(`canceled product with id ${product.product_id}`);
     }
